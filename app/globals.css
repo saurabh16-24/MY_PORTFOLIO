@@ -834,4 +834,74 @@
   .animate-rocket-move {
     animation: rocket-move 4s ease-in-out infinite;
   }
+
+  /* Mobile performance optimizations */
+  @media (max-width: 768px) {
+    /* Reduce animation complexity on mobile */
+    .animate-asteroid-float {
+      animation-duration: 12s; /* Slower animations */
+    }
+    
+    .animate-asteroid-glow {
+      animation-duration: 4s;
+    }
+    
+    .animate-asteroid-trail {
+      animation-duration: 3s;
+    }
+    
+    .animate-falling-star {
+      animation-duration: 4s;
+    }
+    
+    .animate-star-trail {
+      animation-duration: 3s;
+    }
+    
+    .animate-star-twinkle {
+      animation-duration: 6s;
+    }
+    
+    .animate-planet-rotate {
+      animation-duration: 30s;
+    }
+    
+    .animate-satellite-rotate {
+      animation-duration: 12s;
+    }
+    
+    .animate-nebula-pulse {
+      animation-duration: 15s;
+    }
+    
+    .animate-astronaut-float {
+      animation-duration: 8s;
+    }
+    
+    .animate-jetpack-flame {
+      animation-duration: 1s;
+    }
+    
+    .animate-rocket-move {
+      animation-duration: 6s;
+    }
+  }
+
+  /* Disable animations on very low-end devices */
+  @media (max-width: 480px) and (max-height: 600px) {
+    .animate-asteroid-float,
+    .animate-asteroid-glow,
+    .animate-asteroid-trail,
+    .animate-falling-star,
+    .animate-star-trail,
+    .animate-star-twinkle,
+    .animate-planet-rotate,
+    .animate-satellite-rotate,
+    .animate-nebula-pulse,
+    .animate-astronaut-float,
+    .animate-jetpack-flame,
+    .animate-rocket-move {
+      animation: none !important;
+    }
+  }
 }

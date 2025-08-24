@@ -185,7 +185,7 @@ const SpaceEnvironment = () => {
 
       const newAsteroids = []
       
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < asteroidCount; i++) {
         // Use grid-based distribution for better spread
         const gridSize = 5
         const gridX = i % gridSize
@@ -217,7 +217,7 @@ const SpaceEnvironment = () => {
         '#e91e63', '#00bcd4', '#8bc34a', '#ff5722', '#3f51b5'
       ]
       const newStars = []
-      for (let i = 0; i < 200; i++) { // Increased from 150 to 200
+      for (let i = 0; i < starCount; i++) { // Mobile optimized count
         newStars.push({
           id: i,
           x: Math.random() * window.innerWidth,
@@ -301,7 +301,7 @@ const SpaceEnvironment = () => {
 
       const newPlanets = []
       
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < planetCount; i++) {
         const hasRings = Math.random() > 0.7
         const moonCount = Math.floor(Math.random() * 3)
         const moons = []
@@ -350,7 +350,7 @@ const SpaceEnvironment = () => {
       const types = ['satellite', 'space-station', 'probe']
       const newSatellites = []
       
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < satelliteCount; i++) {
         // Use grid-based distribution for better spread
         const gridSize = 4
         const gridX = i % gridSize
@@ -389,7 +389,7 @@ const SpaceEnvironment = () => {
 
       const newNebulas = []
       
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < nebulaCount; i++) {
         // Use grid-based distribution for better spread
         const gridSize = 3
         const gridX = i % gridSize
@@ -422,7 +422,7 @@ const SpaceEnvironment = () => {
       const types = ['astronaut', 'cosmonaut']
       const newAstronauts = []
       
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < astronautCount; i++) {
         // Use grid-based distribution for better spread
         const gridSize = 3
         const gridX = i % gridSize
@@ -462,7 +462,7 @@ const SpaceEnvironment = () => {
       const types = ['rocket', 'shuttle', 'capsule']
       const newRockets = []
       
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < rocketCount; i++) {
         // Use grid-based distribution for better spread
         const gridSize = 4
         const gridX = i % gridSize
@@ -486,6 +486,18 @@ const SpaceEnvironment = () => {
       setRockets(newRockets)
     }
 
+    // Performance optimization for mobile devices
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    
+    // Reduce object count for mobile devices
+    const asteroidCount = isMobile ? 15 : 25
+    const starCount = isMobile ? 100 : 200
+    const planetCount = isMobile ? 6 : 8
+    const satelliteCount = isMobile ? 8 : 12
+    const nebulaCount = isMobile ? 4 : 6
+    const astronautCount = isMobile ? 4 : 6
+    const rocketCount = isMobile ? 6 : 8
+
     generateAsteroids()
     generateStars()
     generatePlanets()
@@ -494,8 +506,13 @@ const SpaceEnvironment = () => {
     generateAstronauts()
     generateRockets()
 
-    // Generate falling stars periodically
-    const fallingStarInterval = setInterval(generateFallingStar, 800) // Increased frequency from 2000ms to 800ms
+    // Generate falling stars periodically (mobile optimized)
+    const fallingStarInterval = setInterval(generateFallingStar, isMobile ? 1500 : 800) // Slower on mobile
+
+    // Reduce animation complexity for mobile
+    const animationInterval = isMobile ? 100 : 50 // Slower updates on mobile
+    const maxFallingStars = isMobile ? 5 : 15 // Fewer falling stars on mobile
+    const maxTrailPoints = isMobile ? 6 : 12 // Shorter trails on mobile
 
     // Animation loop
     const animate = () => {
@@ -521,17 +538,17 @@ const SpaceEnvironment = () => {
         })
       )
 
-      // Animate falling stars
+      // Animate falling stars with mobile optimization
       setFallingStars(prevStars => {
         return prevStars
           .map(star => {
             const newX = star.x + Math.cos(star.angle) * star.speed
             const newY = star.y + Math.sin(star.angle) * star.speed
 
-            // Add trail point
+            // Add trail point with mobile optimization
             const newTrail = [
               { x: star.x, y: star.y, opacity: 0.8 },
-              ...star.trail.slice(0, 8), // Keep last 8 trail points
+              ...star.trail.slice(0, maxTrailPoints), // Reduced trail points on mobile
             ]
 
             return {
@@ -542,24 +559,29 @@ const SpaceEnvironment = () => {
               opacity: star.opacity > 0.1 ? star.opacity - 0.01 : 0,
             }
           })
-          .filter(star => star.y < window.innerHeight + 100 && star.opacity > 0) // Remove stars that are off screen or faded
+          .filter(star => star.y < window.innerHeight + 100 && star.opacity > 0)
+          .slice(0, maxFallingStars) // Limit falling stars on mobile
       })
 
-      // Animate background stars twinkling
-      setStars(prevStars =>
-        prevStars.map(star => ({
-          ...star,
-          twinkle: (star.twinkle + 1) % 100,
-        }))
-      )
+      // Animate background stars twinkling (reduced frequency on mobile)
+      if (!isMobile || Math.random() > 0.5) { // Only update every other frame on mobile
+        setStars(prevStars =>
+          prevStars.map(star => ({
+            ...star,
+            twinkle: (star.twinkle + 1) % 100,
+          }))
+        )
+      }
 
-      // Animate planets
-      setPlanets(prevPlanets =>
-        prevPlanets.map(planet => ({
-          ...planet,
-          rotation: (planet.rotation + planet.rotationSpeed) % 360,
-        }))
-      )
+      // Animate planets (reduced frequency on mobile)
+      if (!isMobile || Math.random() > 0.7) { // Only update 30% of frames on mobile
+        setPlanets(prevPlanets =>
+          prevPlanets.map(planet => ({
+            ...planet,
+            rotation: (planet.rotation + planet.rotationSpeed) % 360,
+          }))
+        )
+      }
 
       // Animate satellites
       setSatellites(prevSatellites =>
@@ -582,13 +604,15 @@ const SpaceEnvironment = () => {
         })
       )
 
-      // Animate nebulas
-      setNebulas(prevNebulas =>
-        prevNebulas.map(nebula => ({
-          ...nebula,
-          pulse: (nebula.pulse + 1) % 100,
-        }))
-      )
+      // Animate nebulas (reduced frequency on mobile)
+      if (!isMobile || Math.random() > 0.8) { // Only update 20% of frames on mobile
+        setNebulas(prevNebulas =>
+          prevNebulas.map(nebula => ({
+            ...nebula,
+            pulse: (nebula.pulse + 1) % 100,
+          }))
+        )
+      }
 
       // Animate astronauts
       setAstronauts(prevAstronauts =>
@@ -611,16 +635,16 @@ const SpaceEnvironment = () => {
         })
       )
 
-      // Animate rockets
+      // Animate rockets with mobile optimization
       setRockets(prevRockets =>
         prevRockets.map(rocket => {
           let newX = rocket.x + rocket.speedX
           let newY = rocket.y + rocket.speedY
 
-          // Add trail point
+          // Add trail point with mobile optimization
           const newTrail = [
             { x: rocket.x, y: rocket.y, opacity: 0.8 },
-            ...rocket.trail.slice(0, 12), // Keep last 12 trail points
+            ...rocket.trail.slice(0, maxTrailPoints), // Reduced trail points on mobile
           ]
 
           // Wrap around screen edges
@@ -640,7 +664,7 @@ const SpaceEnvironment = () => {
       )
     }
 
-    const intervalId = setInterval(animate, 50)
+    const intervalId = setInterval(animate, animationInterval)
 
     // Handle window resize
     const handleResize = () => {
