@@ -243,22 +243,18 @@ export default function Portfolio() {
       institution: "SVCE, Bengaluru",
       year: "2022-2026",
       description: "Currently pursuing with focus on programming, data structures, and software engineering",
-      grade: "CGPA: 7.7/10",
-      semesters: "Sem 1: 7.8/10, Sem 2: 7.9/10, Sem 3: 7.2/10, Sem 4: 7.6/10, Sem 5: 7.6/10, Sem 6: 7.9/10, Sem 7: 8.1/10",
     },
     {
       degree: "12th Grade (Intermediate)",
       institution: "Gyanada International Sr Sec School, Gopalganj, Bihar",
       year: "2020-2022",
       description: "Completed higher secondary education with science stream",
-      grade: "Percentage: 84.8%",
     },
     {
       degree: "10th Grade",
       institution: "DAV Public School, Thawe, Gopalganj, Bihar",
       year: "2020",
       description: "Completed secondary education with strong academic foundation",
-      grade: "Percentage: 84.4%",
     },
   ]
 
@@ -778,13 +774,6 @@ export default function Portfolio() {
                       </CardHeader>
                       <CardContent>
                         <p className="text-lg text-muted-foreground mb-4">{edu.description}</p>
-                        <p className="text-lg text-muted-foreground">{edu.grade}</p>
-                        {edu.semesters && (
-                          <div className="mt-4">
-                            <h3 className="font-semibold text-lg mb-2">Semesters</h3>
-                            <p className="text-lg text-muted-foreground">{edu.semesters}</p>
-                          </div>
-                        )}
                       </CardContent>
                     </div>
                   </div>
