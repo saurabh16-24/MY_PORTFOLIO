@@ -638,4 +638,200 @@
     background: var(--accent);
     opacity: 0.8;
   }
+
+  /* Asteroid animations */
+  @keyframes asteroid-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(270deg);
+    }
+  }
+
+  @keyframes asteroid-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px currentColor;
+    }
+    50% {
+      box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+  }
+
+  @keyframes asteroid-trail {
+    0% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+
+  .animate-asteroid-float {
+    animation: asteroid-float 8s ease-in-out infinite;
+  }
+
+  .animate-asteroid-glow {
+    animation: asteroid-glow 3s ease-in-out infinite;
+  }
+
+  .animate-asteroid-trail {
+    animation: asteroid-trail 2s ease-out infinite;
+  }
+
+  /* Falling star animations */
+  @keyframes falling-star {
+    0% {
+      transform: translateX(0) translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100px) translateY(100px) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes star-trail {
+    0% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+  }
+
+  @keyframes star-twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  .animate-falling-star {
+    animation: falling-star 3s linear infinite;
+  }
+
+  .animate-star-trail {
+    animation: star-trail 2s ease-out infinite;
+  }
+
+  .animate-star-twinkle {
+    animation: star-twinkle 4s ease-in-out infinite;
+  }
+
+  /* Planet and space object animations */
+  @keyframes planet-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes satellite-rotate {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes nebula-pulse {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.1);
+    }
+  }
+
+  .animate-planet-rotate {
+    animation: planet-rotate 20s linear infinite;
+  }
+
+  .animate-satellite-rotate {
+    animation: satellite-rotate 8s ease-in-out infinite;
+  }
+
+  .animate-nebula-pulse {
+    animation: nebula-pulse 10s ease-in-out infinite;
+  }
+
+  /* Astronaut and rocket animations */
+  @keyframes astronaut-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-5px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(-2px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-8px) rotate(270deg);
+    }
+  }
+
+  @keyframes jetpack-flame {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes rocket-move {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(90deg) scale(1.05);
+    }
+    50% {
+      transform: rotate(180deg) scale(1);
+    }
+    75% {
+      transform: rotate(270deg) scale(1.05);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  .animate-astronaut-float {
+    animation: astronaut-float 6s ease-in-out infinite;
+  }
+
+  .animate-jetpack-flame {
+    animation: jetpack-flame 0.5s ease-in-out infinite;
+  }
+
+  .animate-rocket-move {
+    animation: rocket-move 4s ease-in-out infinite;
+  }
 }

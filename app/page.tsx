@@ -71,6 +71,897 @@ const FloatingParticles = () => {
   )
 }
 
+const SpaceEnvironment = () => {
+  const [asteroids, setAsteroids] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speedX: number;
+    speedY: number;
+    rotation: number;
+    rotationSpeed: number;
+    color: string;
+    opacity: number;
+  }>>([])
+
+  const [fallingStars, setFallingStars] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speed: number;
+    angle: number;
+    color: string;
+    opacity: number;
+    trail: Array<{ x: number; y: number; opacity: number }>;
+  }>>([])
+
+  const [stars, setStars] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    twinkle: number;
+    color: string;
+  }>>([])
+
+  const [planets, setPlanets] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    rotation: number;
+    rotationSpeed: number;
+    color: string;
+    rings: boolean;
+    moons: Array<{ x: number; y: number; size: number; color: string }>;
+  }>>([])
+
+  const [satellites, setSatellites] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speedX: number;
+    speedY: number;
+    rotation: number;
+    rotationSpeed: number;
+    color: string;
+    type: 'satellite' | 'space-station' | 'probe';
+  }>>([])
+
+  const [nebulas, setNebulas] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    color: string;
+    opacity: number;
+    pulse: number;
+  }>>([])
+
+  const [astronauts, setAstronauts] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speedX: number;
+    speedY: number;
+    rotation: number;
+    color: string;
+    type: 'astronaut' | 'cosmonaut';
+    jetpack: boolean;
+  }>>([])
+
+  const [rockets, setRockets] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speedX: number;
+    speedY: number;
+    rotation: number;
+    color: string;
+    type: 'rocket' | 'shuttle' | 'capsule';
+    trail: Array<{ x: number; y: number; opacity: number }>;
+  }>>([])
+
+  useEffect(() => {
+    // Generate initial asteroids
+    const generateAsteroids = () => {
+      const colors = [
+        '#10b981', // emerald
+        '#3b82f6', // blue
+        '#8b5cf6', // violet
+        '#f59e0b', // amber
+        '#ef4444', // red
+        '#06b6d4', // cyan
+        '#84cc16', // lime
+        '#f97316', // orange
+        '#ec4899', // pink
+        '#6366f1', // indigo
+      ]
+
+      const newAsteroids = []
+      
+      for (let i = 0; i < 25; i++) {
+        // Use grid-based distribution for better spread
+        const gridSize = 5
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newAsteroids.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 4 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.6 + 0.2,
+        })
+      }
+      setAsteroids(newAsteroids)
+    }
+
+    // Generate background stars
+    const generateStars = () => {
+      const starColors = [
+        '#ffffff', '#f0f0f0', '#e0e0e0', '#d0d0d0', '#c0c0c0',
+        '#ffeb3b', '#4caf50', '#2196f3', '#9c27b0', '#ff9800',
+        '#e91e63', '#00bcd4', '#8bc34a', '#ff5722', '#3f51b5'
+      ]
+      const newStars = []
+      for (let i = 0; i < 200; i++) { // Increased from 150 to 200
+        newStars.push({
+          id: i,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 3 + 0.5, // Increased size range
+          twinkle: Math.random() * 100,
+          color: starColors[Math.floor(Math.random() * starColors.length)],
+        })
+      }
+      setStars(newStars)
+    }
+
+    // Generate falling stars
+    const generateFallingStar = () => {
+      const colors = [
+        '#ff6b6b', // red
+        '#4ecdc4', // turquoise
+        '#45b7d1', // blue
+        '#96ceb4', // green
+        '#feca57', // yellow
+        '#ff9ff3', // pink
+        '#54a0ff', // blue
+        '#5f27cd', // purple
+        '#00d2d3', // cyan
+        '#ff9f43', // orange
+        '#10b981', // emerald
+        '#3b82f6', // blue
+        '#8b5cf6', // violet
+        '#ef4444', // red
+        '#06b6d4', // cyan
+        '#84cc16', // lime
+        '#f97316', // orange
+        '#ec4899', // pink
+        '#6366f1', // indigo
+        '#ffffff', // white
+        '#fbbf24', // amber
+        '#34d399', // emerald
+        '#60a5fa', // blue
+        '#a78bfa', // violet
+        '#f87171', // red
+        '#22d3ee', // cyan
+        '#4ade80', // green
+        '#fb923c', // orange
+        '#f472b6', // pink
+        '#818cf8', // indigo
+      ]
+
+      const angle = Math.random() * 60 + 15 // 15-75 degrees
+      const speed = Math.random() * 3 + 2
+      const size = Math.random() * 4 + 2
+
+      const newStar = {
+        id: Date.now() + Math.random(),
+        x: Math.random() * window.innerWidth,
+        y: -50,
+        size,
+        speed,
+        angle: (angle * Math.PI) / 180,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        opacity: 1,
+        trail: [],
+      }
+
+      setFallingStars(prev => [...prev, newStar])
+    }
+
+    // Generate planets
+    const generatePlanets = () => {
+      const planetColors = [
+        '#ff6b6b', // Mars-like red
+        '#4ecdc4', // Neptune-like blue
+        '#45b7d1', // Earth-like blue
+        '#96ceb4', // Venus-like green
+        '#feca57', // Jupiter-like yellow
+        '#ff9ff3', // Pink gas giant
+        '#54a0ff', // Uranus-like blue
+        '#5f27cd', // Purple planet
+        '#00d2d3', // Cyan planet
+        '#ff9f43', // Orange planet
+      ]
+
+      const newPlanets = []
+      
+      for (let i = 0; i < 8; i++) {
+        const hasRings = Math.random() > 0.7
+        const moonCount = Math.floor(Math.random() * 3)
+        const moons = []
+        
+        for (let j = 0; j < moonCount; j++) {
+          moons.push({
+            x: (Math.random() - 0.5) * 60,
+            y: (Math.random() - 0.5) * 60,
+            size: Math.random() * 3 + 1,
+            color: ['#ffffff', '#f0f0f0', '#e0e0e0'][Math.floor(Math.random() * 3)],
+          })
+        }
+
+        // Use grid-based distribution for better spread
+        const gridSize = 4
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newPlanets.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 40 + 20,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 0.5,
+          color: planetColors[Math.floor(Math.random() * planetColors.length)],
+          rings: hasRings,
+          moons,
+        })
+      }
+      setPlanets(newPlanets)
+    }
+
+    // Generate satellites and space objects
+    const generateSatellites = () => {
+      const satelliteColors = [
+        '#ffffff', // white
+        '#f0f0f0', // light gray
+        '#e0e0e0', // gray
+        '#d0d0d0', // dark gray
+        '#c0c0c0', // silver
+      ]
+
+      const types = ['satellite', 'space-station', 'probe']
+      const newSatellites = []
+      
+      for (let i = 0; i < 12; i++) {
+        // Use grid-based distribution for better spread
+        const gridSize = 4
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newSatellites.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 8 + 4,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: (Math.random() - 0.5) * 0.3,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 1,
+          color: satelliteColors[Math.floor(Math.random() * satelliteColors.length)],
+          type: types[Math.floor(Math.random() * types.length)] as 'satellite' | 'space-station' | 'probe',
+        })
+      }
+      setSatellites(newSatellites)
+    }
+
+    // Generate nebulas
+    const generateNebulas = () => {
+      const nebulaColors = [
+        'rgba(255, 107, 107, 0.1)', // red nebula
+        'rgba(78, 205, 196, 0.1)', // turquoise nebula
+        'rgba(69, 183, 209, 0.1)', // blue nebula
+        'rgba(150, 206, 180, 0.1)', // green nebula
+        'rgba(254, 202, 87, 0.1)', // yellow nebula
+        'rgba(255, 159, 243, 0.1)', // pink nebula
+        'rgba(84, 160, 255, 0.1)', // blue nebula
+        'rgba(95, 39, 205, 0.1)', // purple nebula
+      ]
+
+      const newNebulas = []
+      
+      for (let i = 0; i < 6; i++) {
+        // Use grid-based distribution for better spread
+        const gridSize = 3
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newNebulas.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 200 + 100,
+          color: nebulaColors[Math.floor(Math.random() * nebulaColors.length)],
+          opacity: Math.random() * 0.3 + 0.1,
+          pulse: Math.random() * 100,
+        })
+      }
+      setNebulas(newNebulas)
+    }
+
+    // Generate astronauts
+    const generateAstronauts = () => {
+      const astronautColors = [
+        '#ffffff', // white suit
+        '#f0f0f0', // light gray suit
+        '#e0e0e0', // gray suit
+        '#d0d0d0', // dark gray suit
+      ]
+
+      const types = ['astronaut', 'cosmonaut']
+      const newAstronauts = []
+      
+      for (let i = 0; i < 6; i++) {
+        // Use grid-based distribution for better spread
+        const gridSize = 3
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newAstronauts.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 20 + 15, // Increased size for better visibility
+          speedX: (Math.random() - 0.5) * 0.4,
+          speedY: (Math.random() - 0.5) * 0.4,
+          rotation: Math.random() * 360,
+          color: astronautColors[Math.floor(Math.random() * astronautColors.length)],
+          type: types[Math.floor(Math.random() * types.length)] as 'astronaut' | 'cosmonaut',
+          jetpack: Math.random() > 0.5,
+        })
+      }
+      setAstronauts(newAstronauts)
+    }
+
+    // Generate rockets
+    const generateRockets = () => {
+      const rocketColors = [
+        '#ff6b6b', // red rocket
+        '#4ecdc4', // turquoise rocket
+        '#45b7d1', // blue rocket
+        '#96ceb4', // green rocket
+        '#feca57', // yellow rocket
+        '#ff9ff3', // pink rocket
+        '#54a0ff', // blue rocket
+        '#ffffff', // white rocket
+      ]
+
+      const types = ['rocket', 'shuttle', 'capsule']
+      const newRockets = []
+      
+      for (let i = 0; i < 8; i++) {
+        // Use grid-based distribution for better spread
+        const gridSize = 4
+        const gridX = i % gridSize
+        const gridY = Math.floor(i / gridSize)
+        const cellWidth = window.innerWidth / gridSize
+        const cellHeight = window.innerHeight / gridSize
+        
+        newRockets.push({
+          id: i,
+          x: gridX * cellWidth + Math.random() * cellWidth * 0.8 + cellWidth * 0.1,
+          y: gridY * cellHeight + Math.random() * cellHeight * 0.8 + cellHeight * 0.1,
+          size: Math.random() * 20 + 15,
+          speedX: (Math.random() - 0.5) * 0.6,
+          speedY: (Math.random() - 0.5) * 0.6,
+          rotation: Math.random() * 360,
+          color: rocketColors[Math.floor(Math.random() * rocketColors.length)],
+          type: types[Math.floor(Math.random() * types.length)] as 'rocket' | 'shuttle' | 'capsule',
+          trail: [],
+        })
+      }
+      setRockets(newRockets)
+    }
+
+    generateAsteroids()
+    generateStars()
+    generatePlanets()
+    generateSatellites()
+    generateNebulas()
+    generateAstronauts()
+    generateRockets()
+
+    // Generate falling stars periodically
+    const fallingStarInterval = setInterval(generateFallingStar, 800) // Increased frequency from 2000ms to 800ms
+
+    // Animation loop
+    const animate = () => {
+      // Animate asteroids
+      setAsteroids(prevAsteroids =>
+        prevAsteroids.map(asteroid => {
+          let newX = asteroid.x + asteroid.speedX
+          let newY = asteroid.y + asteroid.speedY
+          let newRotation = asteroid.rotation + asteroid.rotationSpeed
+
+          // Wrap around screen edges
+          if (newX < -50) newX = window.innerWidth + 50
+          if (newX > window.innerWidth + 50) newX = -50
+          if (newY < -50) newY = window.innerHeight + 50
+          if (newY > window.innerHeight + 50) newY = -50
+
+          return {
+            ...asteroid,
+            x: newX,
+            y: newY,
+            rotation: newRotation,
+          }
+        })
+      )
+
+      // Animate falling stars
+      setFallingStars(prevStars => {
+        return prevStars
+          .map(star => {
+            const newX = star.x + Math.cos(star.angle) * star.speed
+            const newY = star.y + Math.sin(star.angle) * star.speed
+
+            // Add trail point
+            const newTrail = [
+              { x: star.x, y: star.y, opacity: 0.8 },
+              ...star.trail.slice(0, 8), // Keep last 8 trail points
+            ]
+
+            return {
+              ...star,
+              x: newX,
+              y: newY,
+              trail: newTrail,
+              opacity: star.opacity > 0.1 ? star.opacity - 0.01 : 0,
+            }
+          })
+          .filter(star => star.y < window.innerHeight + 100 && star.opacity > 0) // Remove stars that are off screen or faded
+      })
+
+      // Animate background stars twinkling
+      setStars(prevStars =>
+        prevStars.map(star => ({
+          ...star,
+          twinkle: (star.twinkle + 1) % 100,
+        }))
+      )
+
+      // Animate planets
+      setPlanets(prevPlanets =>
+        prevPlanets.map(planet => ({
+          ...planet,
+          rotation: (planet.rotation + planet.rotationSpeed) % 360,
+        }))
+      )
+
+      // Animate satellites
+      setSatellites(prevSatellites =>
+        prevSatellites.map(satellite => {
+          let newX = satellite.x + satellite.speedX
+          let newY = satellite.y + satellite.speedY
+
+          // Wrap around screen edges
+          if (newX < -50) newX = window.innerWidth + 50
+          if (newX > window.innerWidth + 50) newX = -50
+          if (newY < -50) newY = window.innerHeight + 50
+          if (newY > window.innerHeight + 50) newY = -50
+
+          return {
+            ...satellite,
+            x: newX,
+            y: newY,
+            rotation: (satellite.rotation + satellite.rotationSpeed) % 360,
+          }
+        })
+      )
+
+      // Animate nebulas
+      setNebulas(prevNebulas =>
+        prevNebulas.map(nebula => ({
+          ...nebula,
+          pulse: (nebula.pulse + 1) % 100,
+        }))
+      )
+
+      // Animate astronauts
+      setAstronauts(prevAstronauts =>
+        prevAstronauts.map(astronaut => {
+          let newX = astronaut.x + astronaut.speedX
+          let newY = astronaut.y + astronaut.speedY
+
+          // Wrap around screen edges
+          if (newX < -50) newX = window.innerWidth + 50
+          if (newX > window.innerWidth + 50) newX = -50
+          if (newY < -50) newY = window.innerHeight + 50
+          if (newY > window.innerHeight + 50) newY = -50
+
+          return {
+            ...astronaut,
+            x: newX,
+            y: newY,
+            rotation: (astronaut.rotation + 0.5) % 360,
+          }
+        })
+      )
+
+      // Animate rockets
+      setRockets(prevRockets =>
+        prevRockets.map(rocket => {
+          let newX = rocket.x + rocket.speedX
+          let newY = rocket.y + rocket.speedY
+
+          // Add trail point
+          const newTrail = [
+            { x: rocket.x, y: rocket.y, opacity: 0.8 },
+            ...rocket.trail.slice(0, 12), // Keep last 12 trail points
+          ]
+
+          // Wrap around screen edges
+          if (newX < -100) newX = window.innerWidth + 100
+          if (newX > window.innerWidth + 100) newX = -100
+          if (newY < -100) newY = window.innerHeight + 100
+          if (newY > window.innerHeight + 100) newY = -100
+
+          return {
+            ...rocket,
+            x: newX,
+            y: newY,
+            trail: newTrail,
+            rotation: (rocket.rotation + 1) % 360,
+          }
+        })
+      )
+    }
+
+    const intervalId = setInterval(animate, 50)
+
+    // Handle window resize
+    const handleResize = () => {
+      generateAsteroids()
+      generateStars()
+      generatePlanets()
+      generateSatellites()
+      generateNebulas()
+      generateAstronauts()
+      generateRockets()
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      clearInterval(intervalId)
+      clearInterval(fallingStarInterval)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Nebulas - Background atmospheric effect */}
+      {nebulas.map(nebula => (
+        <div
+          key={nebula.id}
+          className="absolute animate-nebula-pulse"
+          style={{
+            left: nebula.x - nebula.size / 2,
+            top: nebula.y - nebula.size / 2,
+            width: nebula.size,
+            height: nebula.size,
+            background: `radial-gradient(circle, ${nebula.color} 0%, transparent 70%)`,
+            borderRadius: '50%',
+            opacity: nebula.opacity + 0.1 * Math.sin((nebula.pulse / 100) * Math.PI * 2),
+            filter: 'blur(20px)',
+          }}
+        />
+      ))}
+
+      {/* Background stars */}
+      {stars.map(star => (
+        <div
+          key={star.id}
+          className="absolute"
+          style={{
+            left: star.x,
+            top: star.y,
+            width: star.size,
+            height: star.size,
+            backgroundColor: star.color,
+            borderRadius: '50%',
+            opacity: 0.3 + 0.7 * Math.sin((star.twinkle / 100) * Math.PI * 2),
+            boxShadow: `0 0 ${star.size * 2}px ${star.color}`,
+          }}
+        />
+      ))}
+
+      {/* Planets */}
+      {planets.map(planet => (
+        <div key={planet.id} className="absolute">
+          {/* Planet rings (if applicable) */}
+          {planet.rings && (
+            <div
+              className="absolute animate-planet-rotate"
+              style={{
+                left: planet.x - planet.size * 0.8,
+                top: planet.y - planet.size * 0.8,
+                width: planet.size * 1.6,
+                height: planet.size * 1.6,
+                border: `2px solid rgba(255, 255, 255, 0.3)`,
+                borderRadius: '50%',
+                transform: `rotate(${planet.rotation}deg)`,
+              }}
+            />
+          )}
+          
+          {/* Planet */}
+          <div
+            className="absolute animate-planet-rotate"
+            style={{
+              left: planet.x - planet.size / 2,
+              top: planet.y - planet.size / 2,
+              width: planet.size,
+              height: planet.size,
+              backgroundColor: planet.color,
+              borderRadius: '50%',
+              transform: `rotate(${planet.rotation}deg)`,
+              boxShadow: `0 0 ${planet.size * 0.5}px ${planet.color}`,
+              filter: 'blur(1px)',
+            }}
+          />
+
+          {/* Planet moons */}
+          {planet.moons.map((moon, moonIndex) => (
+            <div
+              key={moonIndex}
+              className="absolute"
+              style={{
+                left: planet.x + moon.x - moon.size / 2,
+                top: planet.y + moon.y - moon.size / 2,
+                width: moon.size,
+                height: moon.size,
+                backgroundColor: moon.color,
+                borderRadius: '50%',
+                boxShadow: `0 0 ${moon.size * 2}px ${moon.color}`,
+              }}
+            />
+          ))}
+        </div>
+      ))}
+
+      {/* Satellites and Space Objects */}
+      {satellites.map(satellite => (
+        <div
+          key={satellite.id}
+          className="absolute animate-satellite-rotate"
+          style={{
+            left: satellite.x - satellite.size / 2,
+            top: satellite.y - satellite.size / 2,
+            width: satellite.size,
+            height: satellite.size,
+            backgroundColor: satellite.color,
+            borderRadius: satellite.type === 'space-station' ? '4px' : '50%',
+            transform: `rotate(${satellite.rotation}deg)`,
+            boxShadow: `0 0 ${satellite.size * 2}px ${satellite.color}`,
+            filter: 'blur(0.5px)',
+          }}
+        />
+      ))}
+
+      {/* Rockets with trails */}
+      {rockets.map(rocket => (
+        <div key={rocket.id}>
+          {/* Rocket trail */}
+          {rocket.trail.map((trailPoint, index) => (
+            <div
+              key={`rocket-trail-${rocket.id}-${index}`}
+              className="absolute"
+              style={{
+                left: trailPoint.x - rocket.size * 0.3,
+                top: trailPoint.y - rocket.size * 0.3,
+                width: rocket.size * 0.6 * (1 - index * 0.08),
+                height: rocket.size * 0.6 * (1 - index * 0.08),
+                backgroundColor: rocket.color,
+                borderRadius: rocket.type === 'shuttle' ? '4px' : '50%',
+                opacity: trailPoint.opacity * (1 - index * 0.08),
+                boxShadow: `0 0 ${rocket.size * 2}px ${rocket.color}`,
+                filter: 'blur(2px)',
+              }}
+            />
+          ))}
+          {/* Main rocket */}
+          <div
+            className="absolute animate-rocket-move"
+            style={{
+              left: rocket.x - rocket.size / 2,
+              top: rocket.y - rocket.size / 2,
+              width: rocket.size,
+              height: rocket.size,
+              backgroundColor: rocket.color,
+              borderRadius: rocket.type === 'shuttle' ? '4px' : rocket.type === 'capsule' ? '50%' : '2px',
+              transform: `rotate(${rocket.rotation}deg)`,
+              boxShadow: `0 0 ${rocket.size * 3}px ${rocket.color}`,
+              filter: 'blur(0.5px)',
+            }}
+          />
+        </div>
+      ))}
+
+      {/* Astronauts */}
+      {astronauts.map(astronaut => (
+        <div key={astronaut.id} className="absolute">
+          {/* Jetpack flame (if applicable) */}
+          {astronaut.jetpack && (
+            <div
+              className="absolute animate-jetpack-flame"
+              style={{
+                left: astronaut.x - astronaut.size * 0.3,
+                top: astronaut.y + astronaut.size * 0.4,
+                width: astronaut.size * 0.6,
+                height: astronaut.size * 0.4,
+                background: `linear-gradient(to bottom, #ff6b6b, #ff9f43, transparent)`,
+                borderRadius: '50%',
+                opacity: 0.8,
+                filter: 'blur(1px)',
+              }}
+            />
+          )}
+          
+          {/* Astronaut body */}
+          <div
+            className="absolute animate-astronaut-float"
+            style={{
+              left: astronaut.x - astronaut.size / 2,
+              top: astronaut.y - astronaut.size / 2,
+              width: astronaut.size,
+              height: astronaut.size,
+              backgroundColor: astronaut.color,
+              borderRadius: '50%',
+              transform: `rotate(${astronaut.rotation}deg)`,
+              boxShadow: `0 0 ${astronaut.size * 3}px ${astronaut.color}, 0 0 ${astronaut.size * 6}px rgba(255, 255, 255, 0.3)`,
+              filter: 'blur(0.5px)',
+              border: `2px solid rgba(255, 255, 255, 0.5)`,
+            }}
+          />
+          
+          {/* Astronaut helmet */}
+          <div
+            className="absolute"
+            style={{
+              left: astronaut.x - astronaut.size * 0.3,
+              top: astronaut.y - astronaut.size * 0.4,
+              width: astronaut.size * 0.6,
+              height: astronaut.size * 0.6,
+              backgroundColor: astronaut.color,
+              borderRadius: '50%',
+              border: `3px solid rgba(255, 255, 255, 0.6)`,
+              boxShadow: `0 0 ${astronaut.size * 2}px ${astronaut.color}, inset 0 0 10px rgba(255, 255, 255, 0.2)`,
+            }}
+          />
+          
+          {/* Astronaut visor */}
+          <div
+            className="absolute"
+            style={{
+              left: astronaut.x - astronaut.size * 0.2,
+              top: astronaut.y - astronaut.size * 0.3,
+              width: astronaut.size * 0.4,
+              height: astronaut.size * 0.4,
+              backgroundColor: 'rgba(0, 0, 0, 0.3)',
+              borderRadius: '50%',
+              border: `1px solid rgba(255, 255, 255, 0.4)`,
+            }}
+          />
+        </div>
+      ))}
+
+      {/* Falling stars with trails */}
+      {fallingStars.map(star => (
+        <div key={star.id}>
+          {/* Star trail */}
+          {star.trail.map((trailPoint, index) => (
+            <div
+              key={`trail-${star.id}-${index}`}
+              className="absolute"
+              style={{
+                left: trailPoint.x,
+                top: trailPoint.y,
+                width: star.size * (1 - index * 0.1),
+                height: star.size * (1 - index * 0.1),
+                backgroundColor: star.color,
+                borderRadius: '50%',
+                opacity: trailPoint.opacity * (1 - index * 0.1) * star.opacity,
+                boxShadow: `0 0 ${star.size * 3}px ${star.color}`,
+                filter: 'blur(1px)',
+              }}
+            />
+          ))}
+          {/* Main falling star */}
+          <div
+            className="absolute animate-falling-star"
+            style={{
+              left: star.x,
+              top: star.y,
+              width: star.size,
+              height: star.size,
+              backgroundColor: star.color,
+              borderRadius: '50%',
+              opacity: star.opacity,
+              boxShadow: `0 0 ${star.size * 4}px ${star.color}`,
+              filter: 'blur(0.5px)',
+            }}
+          />
+        </div>
+      ))}
+
+      {/* Asteroids */}
+      {asteroids.map(asteroid => (
+        <div
+          key={asteroid.id}
+          className="absolute animate-asteroid-float animate-asteroid-glow"
+          style={{
+            left: asteroid.x,
+            top: asteroid.y,
+            width: asteroid.size,
+            height: asteroid.size,
+            backgroundColor: asteroid.color,
+            borderRadius: '50%',
+            opacity: asteroid.opacity,
+            transform: `rotate(${asteroid.rotation}deg)`,
+            boxShadow: `0 0 ${asteroid.size * 2}px ${asteroid.color}`,
+            filter: 'blur(0.5px)',
+            animationDelay: `${asteroid.id * 0.2}s`,
+          }}
+        />
+      ))}
+      
+      {/* Additional floating particles for depth */}
+      {asteroids.slice(0, 10).map(asteroid => (
+        <div
+          key={`particle-${asteroid.id}`}
+          className="absolute animate-asteroid-trail"
+          style={{
+            left: asteroid.x + Math.sin(asteroid.rotation * Math.PI / 180) * 20,
+            top: asteroid.y + Math.cos(asteroid.rotation * Math.PI / 180) * 20,
+            width: asteroid.size * 0.3,
+            height: asteroid.size * 0.3,
+            backgroundColor: asteroid.color,
+            borderRadius: '50%',
+            opacity: asteroid.opacity * 0.5,
+            filter: 'blur(1px)',
+            animationDelay: `${asteroid.id * 0.3}s`,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
 const MatrixRain = () => {
   const [rainDrops, setRainDrops] = useState<Array<{
     left: string;
@@ -410,6 +1301,9 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 relative overflow-x-hidden">
+      {/* Space Environment Background */}
+      <SpaceEnvironment />
+      
       {/* Enhanced 3D Mouse Cursor */}
       <div
         className="fixed w-6 h-6 bg-accent/40 rounded-full pointer-events-none z-50 transition-all duration-200 ease-out backdrop-blur-sm"
