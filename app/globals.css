@@ -41,37 +41,37 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.08 0 0); /* Much darker background - almost black */
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: oklch(0.12 0 0); /* Darker cards */
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
+  --popover: oklch(0.08 0 0); /* Darker popover */
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.08 0 0);
   --secondary: oklch(0.7 0.15 150);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
+  --muted: oklch(0.15 0 0); /* Darker muted areas */
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.7 0.15 150);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent-foreground: oklch(0.08 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
+  --border: oklch(0.2 0 0); /* Darker borders */
+  --input: oklch(0.15 0 0); /* Darker inputs */
   --ring: oklch(0.7 0.15 150 / 0.5);
   --chart-1: oklch(0.7 0.15 150);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
+  --sidebar: oklch(0.1 0 0); /* Darker sidebar */
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.7 0.15 150);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-border: oklch(0.2 0 0);
   --sidebar-ring: oklch(0.7 0.15 150 / 0.5);
 }
 
@@ -835,55 +835,85 @@
     animation: rocket-move 4s ease-in-out infinite;
   }
 
+  /* Performance optimizations for all devices */
+  * {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  /* Enable hardware acceleration for animations */
+  .animate-asteroid-float,
+  .animate-falling-star,
+  .animate-planet-rotate,
+  .animate-satellite-rotate,
+  .animate-astronaut-float,
+  .animate-rocket-move {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
   /* Mobile performance optimizations */
   @media (max-width: 768px) {
     /* Reduce animation complexity on mobile */
     .animate-asteroid-float {
-      animation-duration: 12s; /* Slower animations */
+      animation-duration: 15s; /* Slower animations for better performance */
     }
     
     .animate-asteroid-glow {
-      animation-duration: 4s;
+      animation-duration: 5s;
     }
     
     .animate-asteroid-trail {
-      animation-duration: 3s;
-    }
-    
-    .animate-falling-star {
       animation-duration: 4s;
     }
     
+    .animate-falling-star {
+      animation-duration: 5s;
+    }
+    
     .animate-star-trail {
-      animation-duration: 3s;
+      animation-duration: 4s;
     }
     
     .animate-star-twinkle {
-      animation-duration: 6s;
-    }
-    
-    .animate-planet-rotate {
-      animation-duration: 30s;
-    }
-    
-    .animate-satellite-rotate {
-      animation-duration: 12s;
-    }
-    
-    .animate-nebula-pulse {
-      animation-duration: 15s;
-    }
-    
-    .animate-astronaut-float {
       animation-duration: 8s;
     }
     
+    .animate-planet-rotate {
+      animation-duration: 40s;
+    }
+    
+    .animate-satellite-rotate {
+      animation-duration: 15s;
+    }
+    
+    .animate-nebula-pulse {
+      animation-duration: 20s;
+    }
+    
+    .animate-astronaut-float {
+      animation-duration: 10s;
+    }
+    
     .animate-jetpack-flame {
-      animation-duration: 1s;
+      animation-duration: 1.5s;
     }
     
     .animate-rocket-move {
-      animation-duration: 6s;
+      animation-duration: 8s;
+    }
+
+    /* Reduce blur effects on mobile */
+    .glass {
+      backdrop-filter: blur(5px);
+    }
+
+    /* Simplify 3D transforms on mobile */
+    .transform-3d,
+    .transform-3d-deep {
+      perspective: 500px;
     }
   }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, Suspense } from "react"
+import React, { useState, useEffect, Suspense, useMemo, useCallback } from "react"
 import emailjs from '@emailjs/browser'
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
@@ -34,7 +34,10 @@ import { Hero3DScene, Skills3DScene, Contact3DScene } from "@/components/3d-scen
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
 
-const FloatingParticles = () => {
+const randomBetween = (min: number, max: number) => Math.random() * (max - min) + min
+const pickRandom = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)]
+
+const FloatingParticles = React.memo(() => {
   const [particles, setParticles] = useState<Array<{
     left: string;
     top: string;
@@ -43,8 +46,12 @@ const FloatingParticles = () => {
   }>>([])
 
   useEffect(() => {
+    // Detect device type for optimization
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    const particleCount = isMobile ? 8 : 15 // Reduced from 20
+    
     // Generate particles only on client side to avoid hydration mismatch
-    const newParticles = [...Array(20)].map(() => ({
+    const newParticles = [...Array(particleCount)].map(() => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
       animationDelay: `${Math.random() * 8}s`,
@@ -64,14 +71,24 @@ const FloatingParticles = () => {
             top: particle.top,
             animationDelay: particle.animationDelay,
             animationDuration: particle.animationDuration,
+            willChange: 'transform',
           }}
         />
       ))}
     </div>
   )
-}
+})
 
-const SpaceEnvironment = () => {
+FloatingParticles.displayName = 'FloatingParticles'
+
+const SpaceEnvironment = React.memo(({ enabled }: { enabled: boolean }) => {
+  const isMobile =
+    typeof navigator !== "undefined" &&
+    /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  
+  // Don't render if disabled
+  if (!enabled) return null
+
   const [asteroids, setAsteroids] = useState<Array<{
     id: number;
     x: number;
@@ -168,6 +185,19 @@ const SpaceEnvironment = () => {
   }>>([])
 
   useEffect(() => {
+    if (!enabled) {
+      // Clear existing objects when animations are disabled
+      setAsteroids([])
+      setFallingStars([])
+      setStars([])
+      setPlanets([])
+      setSatellites([])
+      setNebulas([])
+      setAstronauts([])
+      setRockets([])
+      return
+    }
+
     // Generate initial asteroids
     const generateAsteroids = () => {
       const colors = [
@@ -487,16 +517,14 @@ const SpaceEnvironment = () => {
     }
 
     // Performance optimization for mobile devices
-    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    
-    // Reduce object count for mobile devices
-    const asteroidCount = isMobile ? 15 : 25
-    const starCount = isMobile ? 100 : 200
-    const planetCount = isMobile ? 6 : 8
-    const satelliteCount = isMobile ? 8 : 12
-    const nebulaCount = isMobile ? 4 : 6
-    const astronautCount = isMobile ? 4 : 6
-    const rocketCount = isMobile ? 6 : 8
+    // Significantly reduce object count for better performance
+    const asteroidCount = isMobile ? 10 : 18 // Reduced from 15:25
+    const starCount = isMobile ? 50 : 120 // Reduced from 100:200
+    const planetCount = isMobile ? 4 : 6 // Reduced from 6:8
+    const satelliteCount = isMobile ? 5 : 8 // Reduced from 8:12
+    const nebulaCount = isMobile ? 3 : 4 // Reduced from 4:6
+    const astronautCount = isMobile ? 3 : 4 // Reduced from 4:6
+    const rocketCount = isMobile ? 4 : 6 // Reduced from 6:8
 
     generateAsteroids()
     generateStars()
@@ -507,12 +535,12 @@ const SpaceEnvironment = () => {
     generateRockets()
 
     // Generate falling stars periodically (mobile optimized)
-    const fallingStarInterval = setInterval(generateFallingStar, isMobile ? 1500 : 800) // Slower on mobile
+    const fallingStarInterval = setInterval(generateFallingStar, isMobile ? 2000 : 1000) // Slower on mobile
 
-    // Reduce animation complexity for mobile
-    const animationInterval = isMobile ? 100 : 50 // Slower updates on mobile
-    const maxFallingStars = isMobile ? 5 : 15 // Fewer falling stars on mobile
-    const maxTrailPoints = isMobile ? 6 : 12 // Shorter trails on mobile
+    // Reduce animation complexity for better performance
+    const animationInterval = isMobile ? 150 : 75 // Slower updates for better performance
+    const maxFallingStars = isMobile ? 3 : 10 // Fewer falling stars on mobile
+    const maxTrailPoints = isMobile ? 4 : 8 // Shorter trails on mobile
 
     // Animation loop
     const animate = () => {
@@ -684,7 +712,11 @@ const SpaceEnvironment = () => {
       clearInterval(fallingStarInterval)
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
+  }, [enabled])
+
+  if (!enabled) {
+    return null
+  }
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -984,9 +1016,11 @@ const SpaceEnvironment = () => {
       ))}
     </div>
   )
-}
+})
 
-const MatrixRain = () => {
+SpaceEnvironment.displayName = 'SpaceEnvironment'
+
+const MatrixRain = React.memo(() => {
   const [rainDrops, setRainDrops] = useState<Array<{
     left: string;
     animationDelay: string;
@@ -1022,9 +1056,11 @@ const MatrixRain = () => {
       ))}
     </div>
   )
-}
+})
 
-const TypingEffect = ({ text, className = "" }: { text: string; className?: string }) => {
+MatrixRain.displayName = 'MatrixRain'
+
+const TypingEffect = React.memo(({ text, className = "" }: { text: string; className?: string }) => {
   const [displayText, setDisplayText] = useState("")
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -1044,7 +1080,9 @@ const TypingEffect = ({ text, className = "" }: { text: string; className?: stri
       <span className="animate-pulse">|</span>
     </span>
   )
-}
+})
+
+TypingEffect.displayName = 'TypingEffect'
 
 export default function Portfolio() {
   const [isVisible, setIsVisible] = useState(false)
@@ -1061,6 +1099,7 @@ export default function Portfolio() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [enableAnimations, setEnableAnimations] = useState(true)
 
   useEffect(() => {
     setMounted(true)
@@ -1070,9 +1109,48 @@ export default function Portfolio() {
   }, [])
 
   useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const connection = (navigator as any)?.connection
+    const deviceMemory = (navigator as any)?.deviceMemory
+
+    const shouldDisable =
+      prefersReducedMotion.matches ||
+      (connection && (connection.saveData || ["slow-2g", "2g", "3g"].includes(connection.effectiveType))) ||
+      (typeof deviceMemory === "number" && deviceMemory < 4)
+
+    if (shouldDisable) {
+      setEnableAnimations(false)
+    }
+
+    const handleChange = () => {
+      setEnableAnimations(!prefersReducedMotion.matches)
+    }
+
+    prefersReducedMotion.addEventListener?.("change", handleChange)
+
+    return () => {
+      prefersReducedMotion.removeEventListener?.("change", handleChange)
+    }
+  }, [])
+
+  // Throttle function for performance
+  const throttle = useCallback((func: Function, limit: number) => {
+    let inThrottle: boolean
+    return function(this: any, ...args: any[]) {
+      if (!inThrottle) {
+        func.apply(this, args)
+        inThrottle = true
+        setTimeout(() => inThrottle = false, limit)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     setIsVisible(true)
 
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const sections = [
         "hero",
         "about",
@@ -1087,7 +1165,7 @@ export default function Portfolio() {
       ]
       
       const scrollPosition = window.scrollY
-      const offset = 150 // Increased offset for better detection
+      const offset = 150
 
       let currentSection = "hero"
       
@@ -1098,7 +1176,6 @@ export default function Portfolio() {
           const sectionTop = offsetTop - offset
           const sectionBottom = offsetTop + offsetHeight - offset
           
-          // Check if the section is currently in view
           if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
             currentSection = section
             break
@@ -1106,23 +1183,22 @@ export default function Portfolio() {
         }
       }
       
-      // Add some debugging to see what's happening
-      console.log('Scroll position:', scrollPosition, 'Active section:', currentSection)
-      
       setActiveSection(currentSection)
-    }
+    }, 100) // Throttle to 100ms
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = throttle((e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
-    }
+    }, 16) // Throttle to ~60fps
 
-    window.addEventListener("scroll", handleScroll)
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("scroll", handleScroll as any)
+    window.addEventListener("mousemove", handleMouseMove as any)
+    handleScroll() // Initial call
+    
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("scroll", handleScroll as any)
+      window.removeEventListener("mousemove", handleMouseMove as any)
     }
-  }, [])
+  }, [throttle])
 
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark")
@@ -1137,20 +1213,18 @@ export default function Portfolio() {
     return <Monitor className="w-5 h-5" />
   }
 
-  const skills = [
+  const skills = useMemo(() => [
     { name: "Python", level: 95, icon: Code, category: "Programming" },
     { name: "SQL", level: 90, icon: Database, category: "Database" },
     { name: "NoSQL", level: 85, icon: Database, category: "Database" },
     { name: "MongoDB", level: 83, icon: Database, category: "Database" },
     { name: "MySQL", level: 88, icon: Database, category: "Database" },
-    { name: "AWS", level: 80, icon: Code, category: "Cloud" },
     { name: "MS Office 365", level: 92, icon: FileText, category: "Productivity" },
-    { name: "GitLab", level: 85, icon: Code, category: "Tools" },
     { name: "Data Science", level: 90, icon: TrendingUp, category: "Analytics" },
     { name: "Machine Learning", level: 85, icon: Brain, category: "ML" },
     { name: "Data Visualization", level: 88, icon: BarChart3, category: "Visualization" },
     { name: "Statistical Analysis", level: 87, icon: TrendingUp, category: "Statistics" },
-  ]
+  ], [])
 
   const education = [
     {
@@ -1209,7 +1283,7 @@ export default function Portfolio() {
       link: "https://drive.google.com/file/d/1fR9p65pczxQFEKqgeevuS1R8qsEdnAQ9/view?usp=sharing",
     },
     {
-      name: "Second 2nd Prize in Debugging Session",
+    name: "3rd Prize in Debugging Session",
       issuer: "SVCE Bangalore",
       year: "2024",
       icon: Award,
@@ -1269,18 +1343,18 @@ export default function Portfolio() {
     },
   ]
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
     setIsMobileMenuOpen(false)
-  }
+  }, [])
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
-  }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -1326,7 +1400,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-background transition-colors duration-300 relative overflow-x-hidden">
       {/* Space Environment Background */}
-      <SpaceEnvironment />
+      <SpaceEnvironment enabled={enableAnimations} />
       
       {/* Enhanced 3D Mouse Cursor */}
       <div
@@ -1390,6 +1464,14 @@ export default function Portfolio() {
               >
                 {getThemeIcon()}
               </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setEnableAnimations((prev) => !prev)}
+                className="ml-2 px-3"
+              >
+                {enableAnimations ? "Disable Effects" : "Enable Effects"}
+              </Button>
             </div>
             <div className="flex items-center lg:hidden">
               <Button
@@ -1432,6 +1514,17 @@ export default function Portfolio() {
                     {item}
                   </button>
                 ))}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setEnableAnimations((prev) => !prev)
+                    setIsMobileMenuOpen(false)
+                  }}
+                  className="mx-4 mt-2"
+                >
+                  {enableAnimations ? "Disable Effects" : "Enable Effects"}
+                </Button>
               </div>
             </div>
           )}
@@ -1442,7 +1535,7 @@ export default function Portfolio() {
         <Suspense fallback={null}>
           <Hero3DScene />
         </Suspense>
-        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-muted/40 to-accent/20 animate-gradient-shift"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/80 to-accent/10 dark:from-background/98 dark:via-background/90 dark:to-accent/15"></div>
         <FloatingParticles />
                   <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-20 left-10 w-20 h-20 bg-accent/10 rounded-full animate-float transform-3d rotate-y-12 hover-glow animate-pulse-3d"></div>
@@ -1463,6 +1556,9 @@ export default function Portfolio() {
                 <img
                   src="/saurabh-profile.jpg"
                   alt="Saurabh Kumar Singh"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="relative w-48 h-48 rounded-full mx-auto mb-6 border-4 border-accent animate-pulse-glow shadow-2xl object-cover object-top transform-3d hover:rotate-y-12 transition-all duration-500 hover-lift hover:scale-110"
                   style={{ 
                     objectPosition: "50% 15%",
@@ -1788,6 +1884,8 @@ export default function Portfolio() {
                         <img
                           src={project.image || "/placeholder.svg"}
                           alt={project.title}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
