@@ -411,7 +411,7 @@ export default function Portfolio() {
               <div className="flex justify-center gap-6 mt-12">
                 {[
                   { icon: Github, link: "https://github.com/saurabh16-24" },
-                  { icon: Linkedin, link: "https://linkedin.com/in/saurabh-singh" },
+                  { icon: Linkedin, link: "https://www.linkedin.com/in/saurabh-kumar-singh-747967258/" },
                   { icon: Mail, link: "mailto:saurabhks102@gmail.com" }
                 ].map((social, idx) => (
                   <a
