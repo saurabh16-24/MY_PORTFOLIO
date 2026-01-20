@@ -255,6 +255,13 @@ export default function Portfolio() {
 
   const certifications = [
     {
+      name: "First Prize in Project Expo 2025",
+      issuer: "SVCE Bangalore",
+      year: "2025",
+      icon: Award,
+      link: "https://drive.google.com/file/d/1qpR2sViD7ggklYqSLi_WPbqUMZIBucgW/view?usp=drivesdk",
+    },
+    {
       name: "Second 2nd Prize in Python Workshop",
       issuer: "SVCE Bangalore",
       year: "2024",
