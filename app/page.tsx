@@ -119,6 +119,10 @@ export default function Portfolio() {
         {
           from_name: formData.name,
           from_email: formData.email,
+          // Also include common template variable names.
+          // Some EmailJS templates use `name`/`email` instead of `from_name`/`from_email`.
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject,
           message: formData.message,
           to_name: 'Saurabh',
