@@ -443,7 +443,7 @@ export default function Portfolio() {
                 Building reliable software solutions through Computer Science, Algorithms, and Interactive Visualization.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-8">
-                <MagneticButton onClick={() => window.open('https://drive.google.com/file/d/1PP-heh-ljlgqz8cXdh4A1C3Z7czRBypV/view?usp=drivesdk', '_blank')} className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <MagneticButton onClick={() => window.open('https://drive.google.com/file/d/1b-DlRPa7bwQRl3ea38Xe2aFEVbKcPVIV/view?usp=drivesdk', '_blank')} className="bg-accent text-accent-foreground hover:bg-accent/90">
                   <Download className="mr-2 h-4 w-4" /> Download Resume
                 </MagneticButton>
                 <MagneticButton variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -903,7 +903,7 @@ export default function Portfolio() {
                     variant="outline"
                     size="lg"
                     className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                    onClick={() => window.open("https://drive.google.com/file/d/1PP-heh-ljlgqz8cXdh4A1C3Z7czRBypV/view?usp=drivesdk", "_blank")}
+                    onClick={() => window.open("https://drive.google.com/file/d/1b-DlRPa7bwQRl3ea38Xe2aFEVbKcPVIV/view?usp=drivesdk", "_blank")}
                   >
                     <Download className="w-4 h-4 mr-2" /> Download Resume
                   </MagneticButton>

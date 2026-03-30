@@ -551,7 +551,7 @@ export default function Portfolio() {
                     variant="outline"
                     size="lg"
                     className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                    onClick={() => window.open("https://drive.google.com/file/d/1PP-heh-ljlgqz8cXdh4A1C3Z7czRBypV/view?usp=drivesdk", "_blank")}
+                    onClick={() => window.open("https://drive.google.com/file/d/1b-DlRPa7bwQRl3ea38Xe2aFEVbKcPVIV/view?usp=drivesdk", "_blank")}
                   >
                     <Download className="w-4 h-4 mr-2" /> Download Resume
                   </MagneticButton>
