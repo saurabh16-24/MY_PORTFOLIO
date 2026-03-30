@@ -142,53 +142,70 @@ export default function Portfolio() {
   // Skills Data with Categories
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Languages",
       icon: Code,
       skills: [
         { name: "Python", icon: FileCode },
+        { name: "Java", icon: Code2 },
         { name: "C", icon: Terminal },
+        { name: "SQL", icon: Database },
+        { name: "HTML", icon: LayoutGrid },
+        { name: "CSS", icon: LayoutGrid },
       ]
     },
     {
-      title: "AI/ML & Computer Science",
+      title: "Frameworks/Libraries",
       icon: Brain,
       skills: [
-        { name: "NumPy", icon: Box },
         { name: "Pandas", icon: FileBarChart },
-        { name: "Matplotlib", icon: PieChart },
+        { name: "NumPy", icon: Box },
         { name: "Scikit-learn", icon: Activity },
         { name: "TensorFlow", icon: Boxes },
-        { name: "Keras", icon: Layers },
+        { name: "Matplotlib", icon: PieChart },
+        { name: "Flask", icon: Code2 },
+        { name: "FastAPI", icon: Zap },
       ]
     },
     {
       title: "Databases",
       icon: Database,
       skills: [
-        { name: "SQL", icon: Database },
-        { name: "NoSQL", icon: FileJson },
-      ]
-    },
-    {
-      title: "Tools & Platforms",
-      icon: Settings,
-      skills: [
-        { name: "VS Code", icon: Code2 },
-        { name: "Power BI", icon: BarChart3 },
-        { name: "MS Office 365", icon: LayoutGrid },
         { name: "MySQL", icon: Database },
         { name: "PostgreSQL", icon: Database },
-        { name: "Supabase", icon: Zap },
-        { name: "Git", icon: GitBranch },
-        { name: "GitHub", icon: Github },
+        { name: "MongoDB", icon: FileJson },
       ]
     },
     {
-      title: "Operating Systems",
-      icon: Monitor,
+      title: "Tools/Platforms",
+      icon: Settings,
       skills: [
-        { name: "Windows", icon: Monitor },
+        { name: "Git", icon: GitBranch },
+        { name: "GitHub", icon: Github },
+        { name: "Power BI", icon: BarChart3 },
         { name: "Linux", icon: Terminal },
+        { name: "Unix Shell Scripting (Bash)", icon: Terminal },
+        { name: "AWS (EC2, S3)", icon: Server },
+      ]
+    },
+    {
+      title: "Core Concepts",
+      icon: Activity,
+      skills: [
+        { name: "Data Structures & Algorithms", icon: Activity },
+        { name: "OOP", icon: Layers },
+        { name: "DBMS", icon: Database },
+        { name: "Operating Systems", icon: Monitor },
+        { name: "Computer Networks", icon: Layers },
+        { name: "API Development", icon: Code2 },
+      ]
+    },
+    {
+      title: "Domains",
+      icon: Briefcase,
+      skills: [
+        { name: "Development", icon: Briefcase },
+        { name: "Data Analytics", icon: BarChart3 },
+        { name: "Cloud Computing", icon: Server },
       ]
     }
   ]
@@ -236,6 +253,7 @@ export default function Portfolio() {
         "Implemented authentication, role-based access control (RBAC), secure data handling, and optimized backend performance for scalability and responsiveness."
       ],
       link: "http://103.176.195.216:5000/",
+      linkLabel: "View Work",
     },
     {
       title: "Data Visualization Associate Internship",
@@ -653,7 +671,7 @@ export default function Portfolio() {
                         )}
                         {exp.link && (
                           <a href={exp.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-4 text-accent hover:underline">
-                            View Certificate <ExternalLink size={14} className="ml-1" />
+                            {exp.linkLabel ?? "View Certificate"} <ExternalLink size={14} className="ml-1" />
                           </a>
                         )}
                       </CardContent>
