@@ -87,6 +87,8 @@ export default function Portfolio() {
     setMounted(true)
     // Force dark mode for data theme initially if not set
     setTheme("dark")
+    // Initialize EmailJS with public key
+    emailjs.init('bWD_MtP07mtTCW2RK')
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY
@@ -112,21 +114,23 @@ export default function Portfolio() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    // Debug: check form data in browser console (F12 → Console)
+    console.log('Form data being sent:', JSON.stringify(formData))
+
     try {
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Saurabh',
+      }
+      console.log('EmailJS template params:', JSON.stringify(templateParams))
+
       await emailjs.send(
         'service_h4cdbjc',
         'template_sng6qol',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          // Also include common template variable names.
-          // Some EmailJS templates use `name`/`email` instead of `from_name`/`from_email`.
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_name: 'Saurabh',
-        },
+        templateParams,
         'bWD_MtP07mtTCW2RK'
       )
 
