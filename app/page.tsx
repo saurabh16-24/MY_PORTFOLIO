@@ -150,7 +150,7 @@ export default function Portfolio() {
       ]
     },
     {
-      title: "AI/ML & Data Science",
+      title: "AI/ML & Computer Science",
       icon: Brain,
       skills: [
         { name: "NumPy", icon: Box },
@@ -226,6 +226,16 @@ export default function Portfolio() {
         "Reduced manual GST filing effort by 40%",
         "Onboarded 30+ test users and improved data accuracy with automated tax calculations"
       ],
+    },
+    {
+      title: "CURAHospital Management System",
+      company: "CURAHospital Management System",
+      period: "2025",
+      description: "Developed a full-stack Hospital Management System (HMS) using React, PostgreSQL, and REST APIs enabling patient registration, appointment scheduling, billing, and medical record management with robust API development.",
+      achievements: [
+        "Implemented authentication, role-based access control (RBAC), secure data handling, and optimized backend performance for scalability and responsiveness."
+      ],
+      link: "http://103.176.195.216:5000/",
     },
     {
       title: "Data Visualization Associate Internship",
@@ -307,28 +317,36 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "Sales Prediction and Market Basket Analysis for Retail Chains",
-      description: "Built machine learning models to predict seasonal sales and identify cross-selling opportunities at product level",
-      tech: ["Python", "Machine Learning", "Data Analysis", "Retail Analytics"],
+      title: "SVCE Admission Form System",
+      description: "Web-based SVCE student admission form system built with HTML, CSS, and JavaScript UI, Flask backend APIs, and MySQL database storage. Implemented end-to-end application workflow with client/server form validation, input sanitization, and secure data persistence.",
+      tech: ["HTML", "CSS", "JavaScript", "Flask", "MySQL", "Form Validation", "Student Applications"],
       link: "#",
-      image: "/sales-prediction-dashboard.png",
-      tags: ["Python", "Machine Learning", "Data Analysis", "Retail Analytics"] // Added tags for compatibility with new layout
+      image: "/vce-admission-form.png",
+      tags: ["HTML", "CSS", "JavaScript", "Flask", "MySQL", "Form Validation", "REST API", "Student Applications"]
     },
     {
-      title: "AI-Powered Demand Forecasting and Dynamic Pricing in E-Commerce",
-      description: "Developed interactive forecasting models integrating pricing, demand, and inventory dynamics",
-      tech: ["Python", "AI", "Forecasting", "E-Commerce"],
+      title: "Intelligent Log Monitoring and Anomaly Detection System",
+      description: "Intelligent log monitoring solution using Python to parse logs, extract patterns with Regex, and detect anomalies using Machine Learning. Automatically classifies error types, tracks abnormal behavior signals, and triggers alerting/notification features for faster incident response.",
+      tech: ["Python", "Regex", "Machine Learning", "Log Parsing", "Anomaly Detection", "Error Classification", "Alerting"],
       link: "#",
-      image: "/demand-forecasting-interface.png",
-      tags: ["Python", "AI", "Forecasting", "E-Commerce"]
+      image: "/log-monitoring-anomaly.png",
+      tags: ["Python", "Regex", "Machine Learning", "Log Parsing", "Anomaly Detection", "Error Classification", "Alerting", "Monitoring"]
     },
     {
-      title: "Sports Sponsorship and Market Analysis Using AI",
-      description: "Created AI models analyzing social media sentiment and merchandise sales for sponsorship optimization",
-      tech: ["Python", "AI", "Social Media Analytics", "Market Analysis"],
+      title: "System Resource Monitoring and Alerting Tool (Python)",
+      description: "Python-based system resource monitoring and alerting tool that tracks CPU, memory, disk usage, and running processes in real time. Added structured logging, threshold-based alert triggers, and automated monitoring routines to support proactive system health and performance troubleshooting.",
+      tech: ["Python", "System Monitoring", "CPU Monitoring", "Memory Monitoring", "Disk Monitoring", "Logging", "Alerts", "Real-Time"],
       link: "#",
-      image: "/sports-analysis-dashboard.png",
-      tags: ["Python", "AI", "Social Media Analytics", "Market Analysis"]
+      image: "/resource-monitoring-alerts.png",
+      tags: ["Python", "Real-Time Monitoring", "CPU", "Memory", "Disk", "Process Monitoring", "Logging", "Alerts"]
+    },
+    {
+      title: "Face Recognition Based Voter Verification System",
+      description: "OpenCV-based face recognition system for voter authentication using a secure identity validation workflow. Includes face preprocessing and feature matching, then verifies identities against stored voter records using CSV storage, enabling reliable and streamlined voter verification steps.",
+      tech: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Preprocessing", "CSV Storage"],
+      link: "#",
+      image: "/voter-face-recognition.png",
+      tags: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Preprocessing", "CSV Storage", "Identity Validation"]
     },
   ];
   // ------------------------------------
@@ -390,13 +408,13 @@ export default function Portfolio() {
           <ScrollReveal>
             <div className="space-y-6">
               <div className="inline-block px-4 py-2 border border-accent/30 rounded-full bg-accent/5 backdrop-blur-sm mb-4 animate-bounce-soft">
-                <span className="text-accent font-mono text-sm tracking-wider">DATA SCIENCE ENTHUSIAST & ANALYST</span>
+                <span className="text-accent font-mono text-sm tracking-wider">COMPUTER SCIENCE ENTHUSIAST & ANALYST</span>
               </div>
               <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-4">
                 Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Saurabh Kumar Singh</span>
               </h1>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Transforming raw data into actionable insights through Data Science, Machine Learning, and Interactive Visualization.
+                Building reliable software solutions through Computer Science, Algorithms, and Interactive Visualization.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-8">
                 <MagneticButton onClick={() => window.open('https://drive.google.com/file/d/1PP-heh-ljlgqz8cXdh4A1C3Z7czRBypV/view?usp=drivesdk', '_blank')} className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -493,9 +511,9 @@ export default function Portfolio() {
                     <div className="flex-1 flex flex-col gap-6">
                       <div className="text-muted-foreground leading-relaxed text-lg">
                         <p>
-                          I am a passionate Computer Science student at SVCE Bangalore, with a strong focus on Data Science and Analytics.
-                          My journey involves turning complex datasets into meaningful stories through code and visualization.
-                          I thrive in solving real-world problems using Python, SQL, and modern ML algorithms.
+                          Aspiring Software Engineer with strong foundation in Data Structures, Algorithms, OOP, DBMS, Operating Systems, and Computer Networks.
+                          Experienced in developing scalable applications, RESTful API development, and automation tools with a focus on performance and reliability.
+                          I enjoy turning requirements into clean, maintainable solutions, improving system behavior through debugging, optimization, and proactive monitoring.
                         </p>
                       </div>
 
@@ -504,8 +522,8 @@ export default function Portfolio() {
                         <div className="flex items-start gap-3">
                           <span className="text-2xl text-accent leading-none">"</span>
                           <p className="flex-1 text-lg italic text-foreground/90 leading-relaxed">
-                            Data is not just numbers and statistics—it's the voice of reality waiting to be heard.
-                            Every dataset tells a story, and as a data enthusiast, I'm here to listen, interpret, and transform that story into actionable insights.<span className="text-2xl text-accent leading-none">"</span>
+                            Great software is built with clarity, discipline, and reliability.
+                            Every constraint teaches a better design, and every test strengthens the system that users depend on.<span className="text-2xl text-accent leading-none">"</span>
                           </p>
                         </div>
                       </div>
@@ -839,7 +857,7 @@ export default function Portfolio() {
             <div className="grid md:grid-cols-2 gap-12">
               <div>
                 <p className="text-lg text-muted-foreground mb-8">
-                  I'm always open to discussing data science projects, potential collaborations, or just geeking out over the latest ML trends.
+                  I'm always open to discussing computer science projects, potential collaborations, or just geeking out over the latest engineering and ML trends.
                 </p>
                 <div className="space-y-6">
                   <a href="mailto:saurabhks102@gmail.com" className="flex items-center gap-4 text-foreground hover:text-accent transition-colors p-3 rounded-lg hover:bg-accent/5">
