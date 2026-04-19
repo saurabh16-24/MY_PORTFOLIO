@@ -520,7 +520,7 @@ export default function Portfolio() {
                     <div className="w-full md:w-1/4 flex-shrink-0">
                       <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden border-2 border-accent/30 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                         <Image
-                          src="/M.jpeg"
+                          src="/m1.jpeg"
                           alt="Profile"
                           fill
                           className="object-cover object-top"
