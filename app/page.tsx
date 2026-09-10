@@ -153,10 +153,10 @@ export default function Portfolio() {
       title: "Languages",
       icon: Code,
       skills: [
-        { name: "Python", icon: FileCode },
         { name: "Java", icon: Code2 },
-        { name: "C", icon: Terminal },
+        { name: "Python", icon: FileCode },
         { name: "SQL", icon: Database },
+        { name: "C", icon: Terminal },
         { name: "HTML", icon: LayoutGrid },
         { name: "CSS", icon: LayoutGrid },
       ]
@@ -165,21 +165,20 @@ export default function Portfolio() {
       title: "Frameworks/Libraries",
       icon: Brain,
       skills: [
-        { name: "Pandas", icon: FileBarChart },
-        { name: "NumPy", icon: Box },
-        { name: "Scikit-learn", icon: Activity },
-        { name: "TensorFlow", icon: Boxes },
-        { name: "Matplotlib", icon: PieChart },
+        { name: "Spring Boot", icon: Zap },
+        { name: "Hibernate", icon: Database },
+        { name: "Java EE", icon: Code2 },
         { name: "Flask", icon: Code2 },
-        { name: "FastAPI", icon: Zap },
+        { name: "Pandas", icon: FileBarChart },
+        { name: "Scikit-learn", icon: Activity },
       ]
     },
     {
       title: "Databases",
       icon: Database,
       skills: [
-        { name: "MySQL", icon: Database },
         { name: "PostgreSQL", icon: Database },
+        { name: "MySQL", icon: Database },
         { name: "MongoDB", icon: FileJson },
       ]
     },
@@ -187,12 +186,12 @@ export default function Portfolio() {
       title: "Tools/Platforms",
       icon: Settings,
       skills: [
-        { name: "Git", icon: GitBranch },
-        { name: "GitHub", icon: Github },
-        { name: "Power BI", icon: BarChart3 },
-        { name: "Linux", icon: Terminal },
-        { name: "Unix Shell Scripting (Bash)", icon: Terminal },
+        { name: "Git & GitHub", icon: Github },
+        { name: "Docker", icon: Box },
+        { name: "Maven/Gradle", icon: Settings },
         { name: "AWS (EC2, S3)", icon: Server },
+        { name: "Linux", icon: Terminal },
+        { name: "Power BI", icon: BarChart3 },
       ]
     },
     {
@@ -200,18 +199,19 @@ export default function Portfolio() {
       icon: Activity,
       skills: [
         { name: "Data Structures & Algorithms", icon: Activity },
-        { name: "OOP", icon: Layers },
+        { name: "Object-Oriented Design", icon: Layers },
+        { name: "Microservices", icon: Boxes },
+        { name: "REST APIs", icon: Code2 },
+        { name: "Multithreading", icon: Cpu },
         { name: "DBMS", icon: Database },
-        { name: "Operating Systems", icon: Monitor },
-        { name: "Computer Networks", icon: Layers },
-        { name: "API Development", icon: Code2 },
       ]
     },
     {
       title: "Domains",
       icon: Briefcase,
       skills: [
-        { name: "Development", icon: Briefcase },
+        { name: "Backend Development", icon: Briefcase },
+        { name: "Software Engineering", icon: Code2 },
         { name: "Data Analytics", icon: BarChart3 },
         { name: "Cloud Computing", icon: Server },
       ]
@@ -241,14 +241,27 @@ export default function Portfolio() {
 
   const experience = [
     {
+      title: "Data Science Intern",
+      company: "GlowLogix Solution, Bangalore",
+      period: "Feb 2026 – May 2026",
+      description: "Worked as a Data Science Intern focusing on data analysis, predictive modeling, and delivering actionable insights.",
+      achievements: [
+        "Analyzed complex datasets to extract meaningful business insights and trends",
+        "Developed and evaluated machine learning models to solve business challenges",
+        "Collaborated with the team to integrate data-driven insights into core applications"
+      ],
+      link: "https://drive.google.com/file/d/19BAusLAqatkGDwg0iuJ9_nt2b-KI-xWi/view?usp=drivesdk",
+      linkLabel: "View Certificate",
+    },
+    {
       title: "GST Management System (Industrial Project)",
       company: "Industrial Project",
       period: "July 2025 – Jan 2026",
-      description: "Developed an end-to-end GST system using ETL workflows and microservice-based REST APIs.",
+      description: "Developed an end-to-end GST system focusing on a robust backend architecture and microservice-based REST APIs.",
       achievements: [
-        "Built microservice-based REST APIs for data ingestion, validation, and PostgreSQL storage",
-        "Implemented secure RBAC and optimized SQL queries",
-        "Reduced manual GST filing effort by 40%",
+        "Built microservice-based REST APIs using Java and Spring Boot for data ingestion, validation, and PostgreSQL storage",
+        "Implemented secure RBAC using Spring Security and optimized SQL queries via Hibernate",
+        "Reduced manual GST filing effort by 40% through efficient backend automation",
         "Onboarded 30+ test users and improved data accuracy with automated tax calculations"
       ],
     },
@@ -256,30 +269,32 @@ export default function Portfolio() {
       title: "CURAHospital Management System",
       company: "CURAHospital Management System",
       period: "2025",
-      description: "Developed a full-stack Hospital Management System (HMS) using React, PostgreSQL, and REST APIs enabling patient registration, appointment scheduling, billing, and medical record management with robust API development.",
+      description: "Developed a full-stack Hospital Management System (HMS) with a Java Spring Boot backend and React frontend.",
       achievements: [
-        "Implemented authentication, role-based access control (RBAC), secure data handling, and optimized backend performance for scalability and responsiveness."
+        "Built RESTful APIs with Spring Boot for patient registration, appointment scheduling, and billing",
+        "Implemented JWT authentication, role-based access control (RBAC), and secure data handling",
+        "Optimized PostgreSQL database performance for scalability and responsiveness"
       ],
       link: "http://103.176.195.216:5000/",
       linkLabel: "View Work",
     },
     {
-      title: "Data Visualization Associate Internship",
+      title: "Data Visualization Associate Intern",
       company: "Excelerate - Remote",
-      period: "04/2025 - 05/2025",
+      period: "Apr 2025 – May 2025",
       description: "Worked on comprehensive data visualization projects focusing on business intelligence and analytics",
       achievements: [
         "Developed comprehensive dashboards for tracking key performance indicators and trends",
         "Conducted in-depth data analysis for forecasting market shifts and identifying opportunities",
-        "Optimized supply chain operations with regression and clustering techniques",
-        "Enhanced data-driven decision-making processes",
+        "Optimized operations by integrating data-driven insights with backend reporting modules",
       ],
-      link: "https://drive.google.com/file/d/1v4PqjYHbEn6JpCz3sYEbUy8jiMhZJH07/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1v4PqjYHbEn6JpCz3sYEbUy8jiMhZJH07/view",
+      linkLabel: "View Certificate",
     },
     {
       title: "Event Coordinator - Foosball Event",
       company: "KalaVaibhava 2024, SVCE Bangalore",
-      period: "11/2024",
+      period: "Nov 2024",
       description: "Led event coordination for college cultural festival foosball tournament",
       achievements: [
         "Led planning, marketing, and budget management for campus sporting event",
@@ -344,23 +359,23 @@ export default function Portfolio() {
   const projects = [
     {
       title: "SVCE Admission Form System",
-      description: "Web-based SVCE student admission form system built with HTML, CSS, and JavaScript UI, Flask backend APIs, and MySQL database storage. Implemented end-to-end application workflow with client/server form validation, input sanitization, and secure data persistence.",
-      tech: ["HTML", "CSS", "JavaScript", "Flask", "MySQL", "Form Validation", "Student Applications"],
+      description: "Web-based SVCE student admission form system built with a React UI, Java Spring Boot backend APIs, and MySQL database storage. Implemented end-to-end application workflow with client/server form validation, input sanitization, and secure data persistence.",
+      tech: ["Java", "Spring Boot", "React", "MySQL", "REST API", "Validation"],
       link: "#",
       image: "/vce-admission-form.png",
-      tags: ["HTML", "CSS", "JavaScript", "Flask", "MySQL", "Form Validation", "REST API", "Student Applications"]
+      tags: ["Java", "Spring Boot", "React", "MySQL", "REST API", "Student Applications"]
     },
     {
       title: "Intelligent Log Monitoring and Anomaly Detection System",
-      description: "Intelligent log monitoring solution using Python to parse logs, extract patterns with Regex, and detect anomalies using Machine Learning. Automatically classifies error types, tracks abnormal behavior signals, and triggers alerting/notification features for faster incident response.",
-      tech: ["Python", "Regex", "Machine Learning", "Log Parsing", "Anomaly Detection", "Error Classification", "Alerting"],
+      description: "Intelligent log monitoring solution using Java to parse logs and extract patterns, integrated with Python and Machine Learning to detect anomalies. Automatically classifies error types, tracks abnormal behavior signals, and triggers alerting features for faster incident response.",
+      tech: ["Java", "Python", "Machine Learning", "Log Parsing", "Anomaly Detection", "Alerting"],
       link: "#",
       image: "/log-monitoring-anomaly.png",
-      tags: ["Python", "Regex", "Machine Learning", "Log Parsing", "Anomaly Detection", "Error Classification", "Alerting", "Monitoring"]
+      tags: ["Java", "Python", "Machine Learning", "Log Parsing", "Anomaly Detection", "Monitoring"]
     },
     {
-      title: "System Resource Monitoring and Alerting Tool (Python)",
-      description: "Python-based system resource monitoring and alerting tool that tracks CPU, memory, disk usage, and running processes in real time. Added structured logging, threshold-based alert triggers, and automated monitoring routines to support proactive system health and performance troubleshooting.",
+      title: "System Resource Monitoring and Alerting Tool",
+      description: "Backend system resource monitoring and alerting tool that tracks CPU, memory, disk usage, and running processes in real time. Added structured logging, threshold-based alert triggers, and automated monitoring routines to support proactive system health and performance troubleshooting.",
       tech: ["Python", "System Monitoring", "CPU Monitoring", "Memory Monitoring", "Disk Monitoring", "Logging", "Alerts", "Real-Time"],
       link: "#",
       image: "/resource-monitoring-alerts.png",
@@ -368,11 +383,11 @@ export default function Portfolio() {
     },
     {
       title: "Face Recognition Based Voter Verification System",
-      description: "OpenCV-based face recognition system for voter authentication using a secure identity validation workflow. Includes face preprocessing and feature matching, then verifies identities against stored voter records using CSV storage, enabling reliable and streamlined voter verification steps.",
-      tech: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Preprocessing", "CSV Storage"],
+      description: "OpenCV-based face recognition system for voter authentication using a secure identity validation workflow. Includes face preprocessing and feature matching, then verifies identities against stored voter records, enabling reliable and streamlined voter verification steps.",
+      tech: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Preprocessing"],
       link: "#",
       image: "/voter-face-recognition.png",
-      tags: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Preprocessing", "CSV Storage", "Identity Validation"]
+      tags: ["OpenCV", "Face Recognition", "Python", "Voter Verification", "Authentication", "Identity Validation"]
     },
   ];
   // ------------------------------------
@@ -434,13 +449,13 @@ export default function Portfolio() {
           <ScrollReveal>
             <div className="space-y-6">
               <div className="inline-block px-4 py-2 border border-accent/30 rounded-full bg-accent/5 backdrop-blur-sm mb-4 animate-bounce-soft">
-                <span className="text-accent font-mono text-sm tracking-wider">COMPUTER SCIENCE ENTHUSIAST & ANALYST</span>
+                <span className="text-accent font-mono text-sm tracking-wider">JAVA DEVELOPER & DATA ENTHUSIAST</span>
               </div>
               <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-4">
                 Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Saurabh Kumar Singh</span>
               </h1>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Building reliable software solutions through Computer Science, Algorithms, and Interactive Visualization.
+                Building reliable, scalable backend solutions with Java and Spring Boot, alongside data-driven insights.
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-8">
                 <MagneticButton onClick={() => window.open('https://drive.google.com/file/d/1b-DlRPa7bwQRl3ea38Xe2aFEVbKcPVIV/view?usp=drivesdk', '_blank')} className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -537,9 +552,9 @@ export default function Portfolio() {
                     <div className="flex-1 flex flex-col gap-6">
                       <div className="text-muted-foreground leading-relaxed text-lg">
                         <p>
-                          Aspiring Software Engineer with strong foundation in Data Structures, Algorithms, OOP, DBMS, Operating Systems, and Computer Networks.
-                          Experienced in developing scalable applications, RESTful API development, and automation tools with a focus on performance and reliability.
-                          I enjoy turning requirements into clean, maintainable solutions, improving system behavior through debugging, optimization, and proactive monitoring.
+                          Aspiring Java Developer and Software Engineer with a strong foundation in Data Structures, Algorithms, Object-Oriented Programming, and DBMS.
+                          Experienced in developing scalable backend architectures, microservice-based REST APIs using Spring Boot, and working with relational databases.
+                          I enjoy turning requirements into clean, maintainable solutions, with a keen interest in integrating data analytics and insights into robust systems.
                         </p>
                       </div>
 
