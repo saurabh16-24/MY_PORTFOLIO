@@ -910,3 +910,42 @@
     }
   }
 }
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rgb-border-spin {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.metallic-rgb-border {
+  position: relative;
+  z-index: 1;
+}
+
+.metallic-rgb-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--angle),
+    #a8a8a8 0%,
+    #ff0000 12%,
+    #ff7300 25%,
+    #fffb00 37%,
+    #48ff00 50%,
+    #00ffd5 62%,
+    #002bff 75%,
+    #ff00c8 87%,
+    #a8a8a8 100%
+  );
+  animation: rgb-border-spin 4s linear infinite;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2), inset 0 0 20px rgba(0,0,0,0.5);
+}
+

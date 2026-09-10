@@ -510,7 +510,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Monitor className="text-accent h-8 w-8" /> About Me
@@ -592,7 +592,7 @@ export default function Portfolio() {
             {/* Sign Board Trigger */}
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Technical Arsenal <Brain className="text-accent h-8 w-8" />
@@ -655,7 +655,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <TrendingUp className="text-accent h-8 w-8" /> Professional Experience
@@ -717,7 +717,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Key Projects <Code className="text-accent h-8 w-8" />
@@ -775,7 +775,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Award className="text-accent h-8 w-8" /> Education
@@ -818,7 +818,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(248,152,32,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/95 backdrop-blur-sm metallic-rgb-border hover:shadow-[0_0_30px_rgba(248,152,32,0.4)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Achievements & Activities <Award className="text-accent h-8 w-8" />
