@@ -28,26 +28,26 @@
 }
 
 .dark {
-  /* Cyber/Vibrant Dark Mode */
-  --background: oklch(0.12 0.04 290); /* Deep Purple/Space */
-  --foreground: oklch(0.95 0.02 290);
-  --card: oklch(0.18 0.05 290);
-  --card-foreground: oklch(0.95 0.02 290);
-  --popover: oklch(0.15 0.05 290);
-  --popover-foreground: oklch(0.95 0.02 290);
-  --primary: oklch(0.75 0.2 250); /* Bright Blue */
-  --primary-foreground: oklch(0.12 0.04 290);
-  --secondary: oklch(0.25 0.08 290);
-  --secondary-foreground: oklch(0.95 0.02 290);
-  --muted: oklch(0.2 0.06 290);
-  --muted-foreground: oklch(0.7 0.05 290);
-  --accent: oklch(0.65 0.25 330); /* Vibrant Hot Pink/Magenta */
-  --accent-foreground: oklch(0.98 0.02 290);
-  --destructive: oklch(0.5 0.2 20);
-  --destructive-foreground: oklch(0.95 0.02 290);
-  --border: oklch(0.25 0.08 290);
-  --input: oklch(0.2 0.06 290);
-  --ring: oklch(0.65 0.25 330);
+  /* Cyber/Data Dark Mode */
+  --background: oklch(0.1 0.02 240); /* Deep Blue/Black #020617 */
+  --foreground: oklch(0.9 0.05 180); /* Cyan-tinted White */
+  --card: oklch(0.15 0.04 240); /* Slightly lighter deep blue */
+  --card-foreground: oklch(0.9 0.05 180);
+  --popover: oklch(0.12 0.03 240);
+  --popover-foreground: oklch(0.9 0.05 180);
+  --primary: oklch(0.9 0.05 180);
+  --primary-foreground: oklch(0.1 0.02 240);
+  --secondary: oklch(0.2 0.05 240);
+  --secondary-foreground: oklch(0.9 0.05 180);
+  --muted: oklch(0.2 0.04 240);
+  --muted-foreground: oklch(0.6 0.05 240);
+  --accent: oklch(0.7 0.15 160); /* Neon Data Green/Emerald #10b981 */
+  --accent-foreground: oklch(0.1 0.02 240);
+  --destructive: oklch(0.4 0.2 20);
+  --destructive-foreground: oklch(0.9 0.05 180);
+  --border: oklch(0.25 0.05 240);
+  --input: oklch(0.2 0.04 240);
+  --ring: oklch(0.7 0.15 160);
 }
 
 @theme inline {
@@ -347,13 +347,13 @@
   }
 
   .animate-gradient-shift {
-    background: linear-gradient(-45deg, #ec4899, #6b7280, #ffffff, #ec4899);
+    background: linear-gradient(-45deg, #10b981, #6b7280, #ffffff, #10b981);
     background-size: 400% 400%;
     animation: gradient-shift 4s ease infinite;
   }
 
   .animate-gradient-shift-fast {
-    background: linear-gradient(-45deg, #ec4899, #6b7280, #ffffff, #ec4899);
+    background: linear-gradient(-45deg, #10b981, #6b7280, #ffffff, #10b981);
     background-size: 400% 400%;
     animation: gradient-shift 2s ease infinite;
   }
@@ -371,7 +371,7 @@
   }
 
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
@@ -421,7 +421,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #ec4899, #6b7280, #ffffff);
+    background: linear-gradient(135deg, #10b981, #6b7280, #ffffff);
     background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -466,7 +466,7 @@
 
   .hover-lift:hover {
     transform: translateY(-8px) rotateX(5deg);
-    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
   }
 
   /* Book-like effects */
@@ -519,10 +519,10 @@
 
   .book-cover {
     position: relative;
-    background: linear-gradient(135deg, #ec4899 0%, #059669 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border-radius: 8px;
     box-shadow: 
-      0 15px 35px rgba(236, 72, 153, 0.3),
+      0 15px 35px rgba(16, 185, 129, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transform-style: preserve-3d;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -531,7 +531,7 @@
   .book-cover:hover {
     transform: rotateY(-8deg) translateZ(30px);
     box-shadow: 
-      0 25px 60px rgba(236, 72, 153, 0.4),
+      0 25px 60px rgba(16, 185, 129, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
   }
 
@@ -540,7 +540,7 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
     transform: scale(1.05) rotateY(2deg);
   }
 
@@ -554,7 +554,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(45deg, transparent, rgba(236, 72, 153, 0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(16, 185, 129, 0.1), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -910,5 +910,3 @@
     }
   }
 }
-
-.bg-vibrant-mesh { background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); background-size: 400% 400%; animation: gradient-shift 15s ease infinite; }

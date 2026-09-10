@@ -50,9 +50,8 @@ export function DataNetworkBackground() {
                 this.y = Math.random() * canvas!.height
                 this.vx = (Math.random() - 0.5) * 1.5
                 this.vy = (Math.random() - 0.5) * 1.5
-                this.size = Math.random() * 3 + 1
-                const colors = ["#ff007f", "#00f0ff", "#7000ff", "#ffea00", "#10b981"]
-                this.color = colors[Math.floor(Math.random() * colors.length)]
+                this.size = Math.random() * 2 + 1
+                this.color = Math.random() > 0.5 ? "#10b981" : "#06b6d4" // Emerald or Cyan
             }
 
             update() {
@@ -113,7 +112,7 @@ export function DataNetworkBackground() {
                         ctx.moveTo(particles[i].x, particles[i].y)
                         ctx.lineTo(particles[j].x, particles[j].y)
                         const opacity = 1 - distance / connectionDistance
-                        ctx.strokeStyle = `rgba(160, 100, 255, ${opacity * 0.3})` // Purple-ish connections
+                        ctx.strokeStyle = `rgba(16, 185, 129, ${opacity * 0.4})` // Greenish connections
                         ctx.lineWidth = 1
                         ctx.stroke()
                     }
@@ -133,13 +132,9 @@ export function DataNetworkBackground() {
     }, [])
 
     return (
-        <div className="fixed inset-0 z-0 bg-vibrant-mesh pointer-events-none overflow-hidden mix-blend-multiply opacity-90 dark:opacity-40">
-            {/* Colorful Glassmorphic Blobs */}
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/50 rounded-full blur-[120px] animate-pulse mix-blend-screen" style={{ animationDuration: '8s' }}></div>
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-600/50 rounded-full blur-[120px] animate-pulse mix-blend-screen" style={{ animationDuration: '10s' }}></div>
-            <div className="absolute top-[40%] left-[50%] w-[30%] h-[30%] bg-pink-600/40 rounded-full blur-[100px] animate-pulse mix-blend-screen" style={{ animationDuration: '12s' }}></div>
-            
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full mix-blend-plus-lighter" />
-        </div>
+        <canvas
+            ref={canvasRef}
+            className="fixed inset-0 z-0 bg-[#020617] pointer-events-none" // Deep dark blue background
+        />
     )
 }
