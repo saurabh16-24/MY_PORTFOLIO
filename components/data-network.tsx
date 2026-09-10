@@ -133,13 +133,13 @@ export function DataNetworkBackground() {
     }, [])
 
     return (
-        <div className="fixed inset-0 z-0 bg-[#060814] pointer-events-none overflow-hidden">
+        <div className="fixed inset-0 z-0 bg-vibrant-mesh pointer-events-none overflow-hidden mix-blend-multiply opacity-90 dark:opacity-40">
             {/* Colorful Glassmorphic Blobs */}
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '8s' }}></div>
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-600/30 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '10s' }}></div>
-            <div className="absolute top-[40%] left-[50%] w-[30%] h-[30%] bg-pink-600/20 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '12s' }}></div>
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/50 rounded-full blur-[120px] animate-pulse mix-blend-screen" style={{ animationDuration: '8s' }}></div>
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-600/50 rounded-full blur-[120px] animate-pulse mix-blend-screen" style={{ animationDuration: '10s' }}></div>
+            <div className="absolute top-[40%] left-[50%] w-[30%] h-[30%] bg-pink-600/40 rounded-full blur-[100px] animate-pulse mix-blend-screen" style={{ animationDuration: '12s' }}></div>
             
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full mix-blend-plus-lighter" />
         </div>
     )
 }

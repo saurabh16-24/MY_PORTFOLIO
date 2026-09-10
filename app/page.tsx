@@ -510,7 +510,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Monitor className="text-accent h-8 w-8" /> About Me
@@ -592,7 +592,7 @@ export default function Portfolio() {
             {/* Sign Board Trigger */}
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Technical Arsenal <Brain className="text-accent h-8 w-8" />
@@ -604,7 +604,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[40%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Brain className="text-accent" />
                   <h3 className="text-2xl font-bold">Technical Arsenal</h3>
@@ -655,7 +655,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <TrendingUp className="text-accent h-8 w-8" /> Professional Experience
@@ -667,7 +667,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[45%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <TrendingUp className="text-accent" />
                   <h3 className="text-2xl font-bold">Professional Experience</h3>
@@ -717,7 +717,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Key Projects <Code className="text-accent h-8 w-8" />
@@ -729,7 +729,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[55%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Code className="text-accent" />
                   <h3 className="text-2xl font-bold">Key Projects</h3>
@@ -775,7 +775,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Award className="text-accent h-8 w-8" /> Education
@@ -787,7 +787,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[65%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Education</h3>
@@ -818,7 +818,7 @@ export default function Portfolio() {
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] hover:-translate-y-2 active:scale-95 transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Achievements & Activities <Award className="text-accent h-8 w-8" />
@@ -830,7 +830,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[70%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Achievements & Activities</h3>
@@ -908,7 +908,7 @@ export default function Portfolio() {
                     <Phone size={24} className="text-accent" /> 9380328640 / 9973705441
                   </div>
                   <div className="flex items-center gap-4 text-foreground p-3 rounded-lg hover:bg-accent/5">
-                    <MapPin size={24} className="text-accent" /> Bengaluru, India
+                    <MapPin size={24} className="text-accent" /> New Delhi, India
                   </div>
                 </div>
 
