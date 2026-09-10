@@ -452,7 +452,7 @@ export default function Portfolio() {
                 <span className="text-accent font-mono text-sm tracking-wider">JAVA DEVELOPER & DATA ENTHUSIAST</span>
               </div>
               <h1 className="text-4xl md:text-7xl font-bold tracking-tight mb-4">
-                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Saurabh Kumar Singh</span>
+                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 animate-gradient-shift">Saurabh Kumar Singh</span>
               </h1>
               <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Building reliable, scalable backend solutions with Java and Spring Boot, alongside data-driven insights.
@@ -503,14 +503,14 @@ export default function Portfolio() {
           {/* Connector Dot */}
           <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#10b981] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
+            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#ec4899] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
             aria-label="Scroll to About"
           />
 
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Monitor className="text-accent h-8 w-8" /> About Me
@@ -522,7 +522,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-white/10 pb-2">
                     <Monitor className="text-accent" />
@@ -533,7 +533,7 @@ export default function Portfolio() {
                   <div className="flex flex-col md:flex-row gap-6 items-start">
                     {/* Profile Image */}
                     <div className="w-full md:w-1/4 flex-shrink-0">
-                      <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden border-2 border-accent/30 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                      <div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden border-2 border-accent/30 shadow-[0_0_20px_rgba(236,72,153,0.3)]">
                         <Image
                           src="/m1.jpeg"
                           alt="Profile"
@@ -559,7 +559,7 @@ export default function Portfolio() {
                       </div>
 
                       {/* Inspirational Quote */}
-                      <div className="p-6 rounded-lg border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent/5 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                      <div className="p-6 rounded-lg border-2 border-accent/40 bg-gradient-to-br from-accent/10 to-accent/5 shadow-[0_0_15px_rgba(236,72,153,0.2)]">
                         <div className="flex items-start gap-3">
                           <span className="text-2xl text-accent leading-none">"</span>
                           <p className="flex-1 text-lg italic text-foreground/90 leading-relaxed">
@@ -581,7 +581,7 @@ export default function Portfolio() {
           {/* Connector Dot */}
           <button
             onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
-            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -right-[calc(5.5%+12px)] shadow-[0_0_15px_#10b981] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
+            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -right-[calc(5.5%+12px)] shadow-[0_0_15px_#ec4899] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
             aria-label="Scroll to Skills"
           />
 
@@ -592,7 +592,7 @@ export default function Portfolio() {
             {/* Sign Board Trigger */}
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Technical Arsenal <Brain className="text-accent h-8 w-8" />
@@ -604,7 +604,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8 !top-[40%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[40%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Brain className="text-accent" />
                   <h3 className="text-2xl font-bold">Technical Arsenal</h3>
@@ -648,14 +648,14 @@ export default function Portfolio() {
           {/* Connector Dot */}
           <button
             onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#10b981] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
+            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#ec4899] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
             aria-label="Scroll to Experience"
           />
 
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <TrendingUp className="text-accent h-8 w-8" /> Professional Experience
@@ -667,7 +667,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8 !top-[45%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[45%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <TrendingUp className="text-accent" />
                   <h3 className="text-2xl font-bold">Professional Experience</h3>
@@ -710,14 +710,14 @@ export default function Portfolio() {
           {/* Connector Dot */}
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -right-[calc(5.5%+12px)] shadow-[0_0_15px_#10b981] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
+            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -right-[calc(5.5%+12px)] shadow-[0_0_15px_#ec4899] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
             aria-label="Scroll to Projects"
           />
 
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Key Projects <Code className="text-accent h-8 w-8" />
@@ -729,7 +729,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8 !top-[55%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[55%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Code className="text-accent" />
                   <h3 className="text-2xl font-bold">Key Projects</h3>
@@ -768,14 +768,14 @@ export default function Portfolio() {
           {/* Connector Dot */}
           <button
             onClick={() => document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' })}
-            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#10b981] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
+            className="absolute hidden md:block w-6 h-6 rounded-full bg-accent top-10 -left-[calc(5.5%+12px)] shadow-[0_0_15px_#ec4899] border-4 border-black z-10 hover:scale-150 transition-transform cursor-pointer"
             aria-label="Scroll to Education"
           />
 
           <div className="flex flex-col items-center md:items-start mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-start gap-2 text-foreground group-hover:text-accent transition-colors">
                       <Award className="text-accent h-8 w-8" /> Education
@@ -787,7 +787,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8 !top-[65%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[65%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Education</h3>
@@ -813,12 +813,12 @@ export default function Portfolio() {
         {/* Certifications & Activities */}
         <div id="activities" className="relative mb-20 md:mb-48 md:mr-auto md:w-[45%] md:pl-12 text-center md:text-right group">
           {/* Connector Dot */}
-          < div className="absolute hidden md:block w-4 h-4 rounded-full bg-accent top-10 -right-[calc(5.5%+9px)] shadow-[0_0_10px_#10b981]" ></div >
+          < div className="absolute hidden md:block w-4 h-4 rounded-full bg-accent top-10 -right-[calc(5.5%+9px)] shadow-[0_0_10px_#ec4899]" ></div >
 
           <div className="flex flex-col items-center md:items-end mb-12">
             <Dialog modal={false}>
               <DialogTrigger asChild>
-                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300 w-full md:w-3/4 group">
+                <Card className="cursor-pointer bg-card/50 backdrop-blur-sm border-accent/20 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)] transition-all duration-300 w-full md:w-3/4 group">
                   <CardHeader>
                     <CardTitle className="text-3xl font-bold flex items-center justify-center md:justify-end gap-3 text-foreground group-hover:text-accent transition-colors">
                       Achievements & Activities <Award className="text-accent h-8 w-8" />
@@ -830,7 +830,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#020617]/95 backdrop-blur-xl p-8 !top-[70%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-background/95 backdrop-blur-xl p-8 !top-[70%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Achievements & Activities</h3>
@@ -957,7 +957,7 @@ export default function Portfolio() {
         </div>
       </section >
 
-      <footer className="py-8 border-t border-accent/10 text-center text-muted-foreground bg-[#020617]">
+      <footer className="py-8 border-t border-accent/10 text-center text-muted-foreground bg-background/80">
         <p>© 2026 Saurabh Kumar Singh</p>
       </footer>
     </div >
