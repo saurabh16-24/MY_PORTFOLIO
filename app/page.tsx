@@ -58,13 +58,16 @@ import {
   Briefcase,
   GraduationCap,
 } from "lucide-react"
-import { Hero3DScene, Skills3DScene, Contact3DScene } from "@/components/3d-scene"
+import dynamic from "next/dynamic"
+const Hero3DScene = dynamic(() => import("@/components/3d-scene").then(mod => mod.Hero3DScene), { ssr: false })
+const Skills3DScene = dynamic(() => import("@/components/3d-scene").then(mod => mod.Skills3DScene), { ssr: false })
+const Contact3DScene = dynamic(() => import("@/components/3d-scene").then(mod => mod.Contact3DScene), { ssr: false })
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { MagneticButton } from "@/components/magnetic-button"
-import { DataIntroScreen } from "@/components/data-intro"
-import { DataNetworkBackground } from "@/components/data-network"
+const DataIntroScreen = dynamic(() => import("@/components/data-intro").then(mod => mod.DataIntroScreen), { ssr: false })
+const DataNetworkBackground = dynamic(() => import("@/components/data-network").then(mod => mod.DataNetworkBackground), { ssr: false })
+const MultiColorNetwork = dynamic(() => import("@/components/gap-visuals").then(mod => mod.MultiColorNetwork), { ssr: false })
 import { ClientOnly } from "@/components/client-only"
-import { MultiColorNetwork } from "@/components/gap-visuals"
 import { CurvedTimeline } from "@/components/curved-timeline"
 
 export default function Portfolio() {

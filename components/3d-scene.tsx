@@ -5,7 +5,7 @@ import { OrbitControls, Sphere, MeshDistortMaterial, Float, Environment, Box, Po
 import { useRef, useMemo, useState, useEffect } from "react"
 import * as THREE from "three"
 
-function DataSphere({ count = 2000 }) {
+function DataSphere({ count = 400 }) {
   const points = useMemo(() => {
     const p = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
@@ -80,7 +80,7 @@ export function Hero3DScene() {
 
   return (
     <div className="absolute inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, isMobile ? 12 : 8], fov: 60 }}>
+      <Canvas camera={{ position: [0, 0, isMobile ? 12 : 8], fov: 60 }} dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <pointLight position={[-10, -10, -10]} intensity={0.5} color="#10b981" />
@@ -110,7 +110,7 @@ export function Skills3DScene() {
 
   return (
     <div className="absolute inset-0 -z-10 opacity-30">
-      <Canvas camera={{ position: [0, 0, isMobile ? 10 : 8], fov: 50 }}>
+      <Canvas camera={{ position: [0, 0, isMobile ? 10 : 8], fov: 50 }} dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
         <ambientLight intensity={0.5} />
 
         {/* Abstract Data Structures */}
@@ -159,7 +159,7 @@ export function Contact3DScene() {
 
   return (
     <div className="absolute inset-0 -z-10 opacity-20">
-      <Canvas camera={{ position: [0, 0, isMobile ? 9 : 6], fov: 60 }}>
+      <Canvas camera={{ position: [0, 0, isMobile ? 9 : 6], fov: 60 }} dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[5, 5, 5]} intensity={1} />
 

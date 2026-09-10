@@ -14,8 +14,8 @@ export function DataNetworkBackground() {
 
         let animationFrameId: number
         let particles: Particle[] = []
-        const particleCount = 60
-        const connectionDistance = 150
+        const particleCount = 30
+        const connectionDistance = 120
         const mouseSafetyRadius = 150
 
         // Set canvas dimensions
