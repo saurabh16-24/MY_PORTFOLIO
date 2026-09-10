@@ -51,7 +51,7 @@ export function DataNetworkBackground() {
                 this.vx = (Math.random() - 0.5) * 1.5
                 this.vy = (Math.random() - 0.5) * 1.5
                 this.size = Math.random() * 2 + 1
-                this.color = Math.random() > 0.5 ? "#10b981" : "#06b6d4" // Emerald or Cyan
+                this.color = Math.random() > 0.5 ? "#f89820" : "#5382a1" // Java Orange or Blue
             }
 
             update() {
@@ -112,7 +112,7 @@ export function DataNetworkBackground() {
                         ctx.moveTo(particles[i].x, particles[i].y)
                         ctx.lineTo(particles[j].x, particles[j].y)
                         const opacity = 1 - distance / connectionDistance
-                        ctx.strokeStyle = `rgba(16, 185, 129, ${opacity * 0.4})` // Greenish connections
+                        ctx.strokeStyle = `rgba(83, 130, 161, ${opacity * 0.4})` // Java Blue connections
                         ctx.lineWidth = 1
                         ctx.stroke()
                     }
@@ -134,7 +134,7 @@ export function DataNetworkBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 z-0 bg-[#020617] pointer-events-none" // Deep dark blue background
+            className="fixed inset-0 z-0 bg-[#0b1120] pointer-events-none" // Deep Slate Navy background
         />
     )
 }
