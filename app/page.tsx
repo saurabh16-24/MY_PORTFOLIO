@@ -395,8 +395,8 @@ export default function Portfolio() {
   return (
     <div className={`min-h-screen bg-transparent text-foreground relative transition-colors duration-300 font-sans selection:bg-accent selection:text-accent-foreground`}>
       
-      {/* Neon Radium Outer Border Effect */}
-      <div className="fixed inset-0 z-[100] pointer-events-none border-[4px] border-[#39ff14] animate-radium-pulse"></div>
+      {/* Neon Orange Outer Border Effect */}
+      <div className="fixed inset-0 z-[100] pointer-events-none border-[4px] border-[#f89820] animate-neon-orange-pulse"></div>
 
       {showIntro && (
         <ClientOnly>
@@ -525,7 +525,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-2 border-b border-white/10 pb-2">
                     <Monitor className="text-accent" />
@@ -607,7 +607,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[40%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[40%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Brain className="text-accent" />
                   <h3 className="text-2xl font-bold">Technical Arsenal</h3>
@@ -670,7 +670,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[45%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[45%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <TrendingUp className="text-accent" />
                   <h3 className="text-2xl font-bold">Professional Experience</h3>
@@ -732,7 +732,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[55%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[55%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Code className="text-accent" />
                   <h3 className="text-2xl font-bold">Key Projects</h3>
@@ -790,7 +790,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[65%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[65%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Education</h3>
@@ -833,7 +833,7 @@ export default function Portfolio() {
                   </CardHeader>
                 </Card>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-accent/20 bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[70%]" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto border-2 animate-neon-orange-pulse bg-[#0b1120]/95 backdrop-blur-xl p-8 !top-[70%]" onOpenAutoFocus={(e) => e.preventDefault()}>
                 <div className="flex items-center gap-2 border-b border-white/10 pb-2 mb-4">
                   <Award className="text-accent" />
                   <h3 className="text-2xl font-bold">Achievements & Activities</h3>
